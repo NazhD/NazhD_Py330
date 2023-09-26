@@ -2015,6 +2015,44 @@
 # print(s.title())
 
 
+def dvoich():
+    t = int(input("Введиет число: "))
+    o = ''
+    if t == 0:
+        o = "0"
+    for i in range(t):
+        if t >= 1:
+            if int(t) % 2 == 0:
+                 o += "0"
+            else:
+                o += '1'
+            t = t / 2
+    print((str(o)[::-1]))
+
+
+dvoich()
+
+
+
+
+
+
+
+
+
+
+
+# while t < 1:
+#     c = t / 2
+#     if c % 2 == 0:
+#         o += "0"
+#     else:
+#         o += "1"
+# print(o)
+
+
+
+
 
 
 
