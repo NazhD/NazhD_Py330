@@ -1871,8 +1871,9 @@
 # def decor(txt):
 #     def vlozh_func(func):
 #         def suma(texter,*args):
-#             print(texter,*args,"=",sum(args))
-#             print(txt, *args,"=",func(sum(args),len(args)) )
+#             a = ", ".join(list(map(str,args)))
+#             print(texter,a,"=",sum(args))
+#             print(txt, a,"=",func(sum(args),len(args)) )
 #         return suma
 #     return vlozh_func
 #
@@ -1881,7 +1882,141 @@
 #     return a/b
 # pr("Сумма чисел ",2,3,3,4)
 
-print("Новый код")
+# 26.09.2023
+
+# q = 'Pyt'
+# w = "hon"
+# e = q + w
+# print(e)
+# print(e * 3)
+# print(q in e)
+# print(e[0])
+# print(e[::-1])
+# print(e[:3]+'t'+e[4:])
+
+# def chngeCharToStr(s, c_old, c_new):
+#     s2 = ""
+#
+#     for i in s:
+#         if i == c_old:
+#             s2 += c_new
+#             continue
+#         s2 += i
+#     return s2
+#
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень нравится язык програмирования"
+# str2 = chngeCharToStr(str1,"N","P")
+# print("str1 =", str1)
+# print("str2 =", str2)
+
+# print("Привет")
+# print(u"Привет")
+
+# name = 'Dmitriy'
+# age = 25
+# print(f"Меня зовут {name}. Мне {age} лет")
+#
+# print(f"{round(3.353536,2)}")
+# print(f"{3.353536:.2f}")
+
+
+# x = 10
+# y = 5
+# print("x =", x)
+# print(f"{x + y }")
+# print(f"{x} * {y} / 2 = {x * y / 2}")
+
+# num = 74
+# print(f"{{ {{ {num} }} }}")
+
+# dir_name = "folder"
+# file_name = "file.txt"
+# print(fr"home\{dir_name}\{file_name}")
+
+# s = """<div>
+# <a href="#">content</a>
+# </div>"""
+# print(s)
+
+# def square(n):
+#     """"Принемает число n, возврощает квадрат числа n"""
+#     return n ** 2
+#
+#
+# print(square(5))
+# print(square.__doc__)
+
+
+# import math
+#
+# def cylinder(r, h):
+#     """
+#     Вычисляет площадь цилиндра.
+#
+#     Вычисляет площадь цилиндра на основания заданой высаты и радиуса основания
+#
+#     :param r: положительное число, радиус основания цилиндра
+#     :param h: положительное число, высота цилиндра
+#     :return: положительное число, площадь цилиндра
+#     """
+#     return 2 * math.pi * r * (r +h)
+#
+#
+# print(cylinder(2,4))
+
+# print(ord('a'))
+# print(ord('а'))
+
+# s = 'Test string for me'
+#
+# arr = [ord(x) for x in s]
+# print("ASCII коды", arr)
+# arr = [int(sum(arr) / len(arr))] + arr
+# print("среднее арефметическое", arr)
+# arr += [ord(x) for x in (input("->"))[:3] if ord(x) not in arr]
+# print(arr)
+# arr.sort()
+# print(arr)
+# print(arr.sort(reverse=True))
+
+# print(chr(97))
+
+# a,b = 122, 97
+# if a > b:
+#     arr = [chr(i) for i in range(b,a +1)]
+#     print(' '.join(arr))
+# else:
+#     arr = [chr(i) for i in range(a,b +1)]
+#     print(' '.join(arr))
+
+# from random import randint
+#
+# SHORTTEST = 7
+# LONGEST = 10
+# MIN_ASCII = 33
+# MAX_ASCII = 126
+#
+# def random_password():
+#     rand_len = randint(SHORTTEST, LONGEST)
+#     res = ''
+#     for i in range(rand_len):
+#         rand_char = chr(randint(MIN_ASCII, MAX_ASCII))
+#         res += rand_char
+#     return res
+#
+# print("Случайный пароль: ", random_password())
+
+
+# s = "hello, WORLD! I am learning Python"
+# print(s.capitalize())
+# print(s.lower())
+# print(s.upper())
+# print(s.swapcase())
+# print(s.title())
+
+
+
+
 
 
 
