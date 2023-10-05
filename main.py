@@ -12,6 +12,7 @@
 # a = b
 # print(a)
 # print("a =", id(a))
+import re
 
 # a = b = c = 1
 # print(a, b, c)
@@ -2015,29 +2016,328 @@
 # print(s.title())
 
 
-def dvoich():
-    t = int(input("Введиет число: "))
-    o = ''
-    if t == 0:
-        o = "0"
-    for i in range(t):
-        if t >= 1:
-            if int(t) % 2 == 0:
-                 o += "0"
-            else:
-                o += '1'
-            t = t / 2
-    print((str(o)[::-1]))
+# def dvoich():
+#     t = int(input("Введиет число: "))
+#     o = ''
+#     if t == 0:
+#         o = "0"
+#     for i in range(t):
+#         if t >= 1:
+#             if int(t) % 2 == 0:
+#                  o += "0"
+#             else:
+#                 o += '1'
+#             t = t / 2
+#     print((str(o)[::-1]))
+#
+#
+# dvoich()
+
+# from tkinter import *
+# from speedtest import Speedtest
+#
+# def test():
+#     download = Speedtest().download()
+#     upload = Speedtest().upload()
+#     download_speed = int(download / (10**6))
+#     upload_speed = int(upload / (10**6))
+#
+#     download_lable.config(text="Загрузка:\n" + str(download_speed) + "Mb/cek")
+#     upload_lable.config(text="Раздача:\n" + str(upload_speed) + "Mb/cek")
+#
+#
+# root = Tk()
+#
+# root.title("SpeedTes")
+# root.geometry("300x400")
+#
+# builtins = Button(root, text="Нажать", font=100, command=test)
+# builtins.pack(side=BOTTOM, pady=40)
+#
+#
+# download_lable = Label(root,text="Загрузка:\n", font=50)
+# download_lable.pack(pady=(50,20))
+# upload_lable = Label(root, text="отдача\n",font=50)
+# upload_lable.pack(pady=(50,30))
+#
+# root.mainloop()
 
 
-dvoich()
+# 28.09.2023
+# s = "hello, WORLD! I am learning Python"
+# print(s.count("h",0,-1))
+# print(s.find("Python")) # '-1' - нет совпадений
+# print(s.index("Python"))
+# print(s.find("l"))
+# print(s.rfind("l"))
+# print(s.index("Python"))
+# print(s.rindex("Python"))
+
+# strok = "один два"
+# new_text = strok[strok.find(' ') + 1:] + " "+strok[:strok.find(' ')]
+# print(new_text)
+
+# s = "hello, WORLD! I am learning Python"
+# print((s.startswith("hello")))
+# print(s.endswith("Python"))
+
+# a = "456"
+# print(int(a))
+
+# print('abc123'.isalnum()) # цифры и буквы
+# print('ABcabc'.isalpha()) # буквы
+# print('123'.isdigit()) # цифры
+
+# print('abc123'.islower()) # проверяет на наличие нижнего регистра
+# print('ABC'.isupper()) # проверяет на наличие верхнего регистра
+
+# print('py'.center(10))
+# print('py'.center(10,'-'))
+
+# print('               py ff'.lstrip())
+# print('py ff               '.rstrip())
+# print('           py ff               '.strip())
+#
+# print('   https://www.python.org'.lstrip('/:pths '))
+
+# s = "Я изучаю Nython. Мне нравится Nython. Nython очень нравится язык програмирования"
+#
+# print(s.replace('Nython','Python',2))
+
+# s = "-"
+# seq = ('a','b','c')
+# print(s.join(seq))
+#
+# print("..".join(['1','2']))
+#
+# print(":".join("hello"))
+# print('123.456.789'.split('.',1))
+# print('123.456.789'.rsplit('.',1))
+# print('123...456...789'.rsplit('...'))
+
+# s = input("ФИО:").split()
+# print(F"{s[0]}.{s[1][0]}.{s[2][0]}.")
+
+# import re
+#
+# s = "Я ищу совпадения в 2023 году. И я их гайду в 2 счета"
+# reg = '[ ]'
+
+# print(re.findall(reg,s)) # список, содержащий все совпадения
+# print(re.search(reg, s)) # месторасполажения первого совпадения
+# print(re.search(reg, s).span())
+# print(re.search(reg, s).start())
+# print(re.search(reg, s).end())
+# print(re.search(reg, s).group())
+# reg = 'Я ищу'
+# print(re.match(reg, s)) # поиск по заданному шаблону в начале строки
+
+# print(re.split(reg, s, 3)) # возвращает список строк, разбитых по шаблону разделителю
+
+# print(re.sub(reg, '!', s,3)) # поиск и замена
+
+# import re
+
+# s = "Я ищу совпадения - в 2023 году. И я их гайду в 2 счета. [3689]"
+# reg = '[12][0-9][0-9][0-9]'
+# reg = '[А-яЁё]'
+# reg = r'\.'
+# reg = '[.\-\[\]]'
+# reg = r'[^0-9]'
+# print(re.findall(reg, s))
+# print(ord('ё'))
+
+# t = 'Час в 24-часовом формате от 00 до 23. 2021-06-15T21:45. Минуты, в диопазоне от 00 до 59. 2021-06-15T01:09.'
+# p = r'[0-2][0-9][:][0-6][0-9]'
+# print(re.findall(p,t))
+
+# s = 'Час в 24-часовом формате от 00 до 23. 2021-06-15T21:45. Минуты, в диопазоне от 00 до 59. 2021-06-15T01:09.'
+#
+# reg = r'\d'
+#
+# print(re.findall(reg,s))
+
+# from tkinter import *
+# from tkinter import ttk
+# import re
+# def test():
+#     ll = tt.get()
+#     reg = '[Ее][а-я-]+'
+#     rl = re.findall(reg,ll)
+#     label["text"] = rl
+#
+# root = Tk()
+# tt = ttk.Entry(width=30)
+# tt.pack()
+#
+# root.geometry("500x200")
+# root.title("Regulyar")
+#
+# btn = ttk.Button(text="Click", command=test)
+# btn.pack(anchor=NW, padx=6, pady=6)
+#
+# label = ttk.Label()
+# label.pack(anchor=NW, padx=6, pady=6)
+#
+#
+# root.mainloop()
+
+# import re
+
+
+# d = 'Цифры: 7, +17 , -42, 0013, 0.3'
+# print(re.findall(r'[+-]?\d+\.?\d*', d))
+
+# s = '05-03-1987 # Дата рождения'
+#
+# print('Дата рождения: '+(re.sub("-",".",re.sub("#.+", "", s))))
+
+# s = "12 сентября 2023 года"
+# reg = r'\d{2,4}'
+# print(re.findall(reg,s))
+
+# s = '+ 7 499 456-45-78 , +74994564578 , 7 (499) 456 45 78 , 74994564578 '
+# reg = '\+?7\d{10}'
+# print(re.findall(reg, s))
+
+# s = "Я ищу совпадения - в 2023 году. И я их гайду в 2 сче-та. [3689]"
+# reg = r'\w+\.$'
+# print(re.findall(reg, s))
+
+
+# def validate_login(name):
+#     return  re.findall('^[A-Za-z_-]{3,16}$', name)
+#
+#
+# print(validate_login('Python_master'))
+# print(validate_login('Python_master!'))
+
+# print(re.findall(r'\w+', '12+ й'))
+# print(re.findall(r'\w+', '12+ й', flags=re.ASCII))
+#
+# s = "Я ищу совпадения - в 2023 году. И я их гайду в 2 сче-та. [3689]"
+# reg = r'я'
+# print(re.findall(reg, s, re.I))
+
+# text = """
+# one # коментарий
+# two
+# """
+
+# print(re.findall(r'one.\w+', text, re.DOTALL))
+# print(re.findall(r'one$', text, re.MULTILINE))
+# print(re.findall(r'one$', text, re.M))
+
+# print(re.findall("""
+# [a-z.-]+
+# @
+# [a-z.-]+
+# """, 'text@mail.ru', re.VERBOSE))
+
+# text = """Python
+# python
+# PYTHON"""
+# reg = '(?im)^python'
+# print((re.findall(reg,text)))
+
+# text = "<body>Пример жадного соответсвие рег вырожения</body>"
+# print(re.findall("<.*?>", text))
+
+# *?, +?, ??
+# {m,n}?, {,n}?, {m,}?
+
+# s = "<p>Изображение <img alt =''картинка src='bg.jpg'> - фон страницы</p>"
+# # reg = r'<img.*?>'
+# reg = r'<img\s+[^>]*src\s*=\s*[^>]*>'
+# print(re.findall(reg, s))
+
+# s = "Петр, Ольга и Виталий отлично учатся"
+# reg = "Петр|Ольга|Виталий"
+# print(re.findall(reg, s))
+
+# s = "int = 4, float = 4.0, double = 8.0f"
+# reg = r'((int|double)\s*=\s*\d[.\w+]*)'
+# print(re.findall(reg, s))
+
+# s = "5 + 7*2 - 4"
+# reg = r'\s*([+*-])\s*'
+# print(re.split(reg, s))
+
+# a = "28-08-2021"
+# reg = r''
+# print(re.findall(reg, a))
+
+# s = "Я ищу совпадения - в 2023 году. И я их гайду в 2 сче-та. [3689]"
+# reg = r'(\d+)\s(\D+)'
+# print(re.findall(reg, s))
+# print(re.search(reg, s))
+# m = re.search(reg, s)
+# print(m[1])
+# print(re.search(reg, s).group(2))
+
+# text = """
+# Самара
+# Масква
+# Уфа
+# Казянь
+# """
+# count = 0
+# def repl_find(m):
+#     global count
+#     count += 1
+#     return f'<option value="{count}">{m.group(1)}<option>\n'
+#
+# print(re.sub(r"\s*(\w+)\s*", repl_find, text))
+
+# s = "<p>Изображение <img alt ='картинка' src='bg.jpg'> - фон страницы</p>"
+#
+# # reg = r'<img.*?>'
+# # reg = r'<img\s+[^>]*src\s*=\s*([\'"])(.+?)\1'
+# reg = r'<img\s+[^>]*src\s*=\s*(?P<q>[\'"])(.+?)\(?P=q)>'
+# print(re.findall(reg, s))
+
+# (?P<name>)  (?P=name)
+
+# s = "Самолет прилетает 10/23/2023. Будет рады вас видеть после 10/24/2023."
+# reg = r'(\d{2})/(\d{2})/(\d{4})'
+# print((re.sub(reg,r'\2.\1.\3',s)))
+
+# s = "yandex.com and yandex.ru"
+# reg = '(([a-z0-9-]{2,}\.)+[a-z]{2,4})'
+# print(re.sub(reg,r"http://\1",s))
 
 
 
+# Первая задача
+import re
+
+pas = input("Придумайте пароль: ")
+reg = r'(^[a-zA-Z][\w\d_@-]{5,15}$)'
+print(re.findall(reg,pas))
+
+# Вторая задача
 
 
+def regu():
+       pas = input("Ведиет телефон: ")
+       reg = (r'(^'
+              r'[+]*[7][ ][(][0-9]{3}[)][ ][0-9]{3}[ ][0-9]{2}[ ][0-9]{2}|'
+              r'[+]*[7][ ][(][0-9]{3}[)][ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}|'
+              r'[+]*[7][ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{2}[ ][0-9]{2}|'
+              r'[+]*[7][ ][0-9]{3}[ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}|'
+              r'[+]*[7][0-9]{10}$)')
 
+       reg2 = (r'(([+]*[7])'
+               r'(([0-9]{10})|'
+               r'([ ][(][0-9]{3}[)][ ]|'
+               r'[ ][0-9]{3}[ ])'
+               r'[0-9]{3}'
+               r'(([ ]|[-])[0-9]{2}([ ]|[-])[0-9]{2}|)))')
+       print(re.findall(reg,pas))
+       mat = re.search(reg2,pas)
+       print(mat[1])
 
-
-
-
+try:
+       regu()
+except (TypeError, ValueError):
+    print("Не верный формат")
