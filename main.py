@@ -2689,3 +2689,185 @@ import re
 # print('Количество слов: ',count)
 
 
+
+
+
+# def to_str(n, base):  # 255
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]
+#     else:
+#         return to_str(n // base, base) + convert[n % base] # to_str(25, 10) # convert[255%10] =>5
+#
+# print(to_str(255,10))
+
+# names = ['Adam',['Bob',['Cht','Cat'],'Bard','Bert'],'Alex',['Bea','Bill'],'Ann']
+# print(names)
+# print(len(names))
+# print(names[1])
+# print(isinstance(names[1], list))
+# print(isinstance(names[1][1], list))
+# print(isinstance(names[1][1][0], list))
+
+# def count_items(item_list):
+#     count = 0
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)
+#         else:
+#             count += 1
+#     return count
+#
+# print(count_items(names))
+
+
+
+# def remove(text):
+#     if not text:
+#         return ""
+#     if text[0] == "\t" or text[0] == " ":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])
+#
+#
+# print(remove(" Hello\tWorld  "))
+
+
+# ООП
+
+# Class Имя:
+# свойства (переменные)
+# методы (функции)
+
+# class Point:
+#     x = 1
+#     y = 2
+#
+#
+# p1 = Point()
+# p2 = Point()
+# # print(type(p1))
+# print(p1.x)
+# print(p2.x)
+
+#
+# class Point:
+#     x = 1
+#     y = 2
+#
+#     def set_cord(self,x,y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p1.set_cord(3,7)
+
+
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = '00-00-00'
+#     country = 'country'
+#     city = 'city'
+#     adress = 'street, house'
+#
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40,"*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nphone: {self.phone}\nГород: {self.city}\n"
+#               f"Страна: {self.country}\nАдрес: {self.adress}")
+#         print("=" * 40)
+#
+#     def input_info(self, first_name,birthday,phone,country):
+#         self.name = first_name
+#         self.country = country
+#         self.phone = phone
+#         self.birthday = birthday
+#
+#     def set_phone(self,phone):
+#         self.phone = phone
+#
+#     def get_phone(self):
+#         return self.phone
+#
+#     def set_name(self,name):
+#         self.name = name
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+#
+# h1 = Human()
+# # h1.print_info()
+# h1.input_info("Юля","21.05.1986","Баку","Грузия")
+# h1.set_phone("55-99-33")
+# h1.print_info()
+# print(h1.get_phone())
+# h1.set_name("Valya")
+# print(h1.get_name())
+
+#
+# class Person:
+#     skill = 10
+#
+#     def __init__(self,name,surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     def print_info(self):
+#         print("Данные сотрудника: ", self.name, self.surname)
+#
+#     def add_skill(self,k):
+#         self.skill += k
+#         print("Квалификация сотрудника: ", self.skill, "\n")
+#
+#
+# p1 = Person("Виктор", "Викторов")
+# p1.print_info()
+# p1.add_skill(2)
+#
+# p2 = Person("Анна","Долгих")
+# p2.print_info()
+# p2.add_skill(3)
+
+dz_text = ("Замены строки с текстом файле;\n"
+           "изменить строку в списке;\n"
+           "записать список в фаил;\n")
+dz_file = 'dz.txt'
+
+with open(dz_file,'w') as f:
+    f.write(dz_text)
+
+dz_text2 = dz_text
+
+with open(dz_file,'r') as fr:
+    print("Изнанчальный текс:")
+    print(dz_text2)
+    dz_text2 = str()
+    dz_text_clon = []
+    dz_text_clon = fr.readlines()
+
+
+print(dz_text2)
+print("Заменить строки: ")
+input1 = int(input("1: "))-1
+input2 = int(input("2: "))-1
+
+while input1 >= len(dz_text_clon) or input1 < 0 or input1 == input2:
+    input1 = int(input("Вторым значением выбрана "+str(input2+1)+" строка,"+" повторите 1-е значение: "))-1
+while input2 >= len(dz_text_clon) or input2 < 0 or input1 == input2 :
+    input2 = int(input("Первым значением выбрана "+str(input1+1)+" строка,"+" повторите 2-е значение: "))-1
+
+dz_text_clon[input1], dz_text_clon[input2] = dz_text_clon[input2],dz_text_clon[input1]
+for i in dz_text_clon:
+    dz_text2 += i
+
+with open(dz_file, 'w') as f2:
+    f2.write(dz_text2)
+print('После замены:')
+print(dz_text2)
