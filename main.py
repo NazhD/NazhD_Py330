@@ -12,6 +12,7 @@
 # a = b
 # print(a)
 # print("a =", id(a))
+import os.path
 import re
 
 # a = b = c = 1
@@ -2308,36 +2309,383 @@ import re
 
 
 
-# Первая задача
-import re
+# # Первая задача
+# import re
+#
+# pas = input("Придумайте пароль: ")
+# reg = r'(^[a-zA-Z][\w\d_@-]{5,15}$)'
+# print(re.findall(reg,pas))
+#
+# # Вторая задача
+#
+#
+# def regu():
+#        pas = input("Ведиет телефон: ")
+#        reg = (r'(^'
+#               r'[+]*[7][ ][(][0-9]{3}[)][ ][0-9]{3}[ ][0-9]{2}[ ][0-9]{2}|'
+#               r'[+]*[7][ ][(][0-9]{3}[)][ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}|'
+#               r'[+]*[7][ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{2}[ ][0-9]{2}|'
+#               r'[+]*[7][ ][0-9]{3}[ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}|'
+#               r'[+]*[7][0-9]{10}$)')
+#
+#        reg2 = (r'(([+]*[7])'
+#                r'(([0-9]{10})|'
+#                r'([ ][(][0-9]{3}[)][ ]|'
+#                r'[ ][0-9]{3}[ ])'
+#                r'[0-9]{3}'
+#                r'(([ ]|[-])[0-9]{2}([ ]|[-])[0-9]{2}|)))')
+#        print(re.findall(reg,pas))
+#        mat = re.search(reg2,pas)
+#        print(mat[1])
+#
+# try:
+#        regu()
+# except (TypeError, ValueError):
+#     print("Не верный формат")
 
-pas = input("Придумайте пароль: ")
-reg = r'(^[a-zA-Z][\w\d_@-]{5,15}$)'
-print(re.findall(reg,pas))
 
-# Вторая задача
+# 05.10.2023
+# Файлы
+
+# f = open("text.txt", 'r')
+# print(f)
+# print(*f)
+# print(f.closed)
+# f.close()
+# print(f.closed)
+
+# f = open(r"C:\piton\text.txt")
+# print(f.read(3))
+# print(f.read())
+# f.close()
+
+# f = open(r"C:\piton\one.txt")
+# print(f.readline())
+# print(f.readline())
+# f.close()
+#
+# f = open(r"C:\piton\one.txt")
+# print(f.readlines(16))
+# f.close()
+
+# f = open(r"C:\piton\one.txt")
+# # print(f.readlines())
+# # print(len(f.readlines()))
+# count = 0
+# for line in f:
+#     print(line, end="")
+#     count += 1
+# print(count)
+#
+# f.close()
+
+# f = open("xyz.txt", 'w')
+# f.write(("Hello \nWorld"))
+# f.close()
+#
+# f = open("xyz.txt", 'a')
+# f.write(("\nНовый текст \nWorld"))
+# f.close()
 
 
-def regu():
-       pas = input("Ведиет телефон: ")
-       reg = (r'(^'
-              r'[+]*[7][ ][(][0-9]{3}[)][ ][0-9]{3}[ ][0-9]{2}[ ][0-9]{2}|'
-              r'[+]*[7][ ][(][0-9]{3}[)][ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}|'
-              r'[+]*[7][ ][0-9]{3}[ ][0-9]{3}[ ][0-9]{2}[ ][0-9]{2}|'
-              r'[+]*[7][ ][0-9]{3}[ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}|'
-              r'[+]*[7][0-9]{10}$)')
+# f = open("xyz.txt", 'a')
+# line = ['\nThis is line 1''\nThis is line 2','\nThis is line 3']
+# f.writelines(line)
+# f.close()
+#
+# f = open("xyz.txt", 'w')
+# lst = [str(i) for i in range(1,20)]
+#
+# # lst = "\t".join(map(str,lst))
+# # print(lst)
+# f.write(str((lst)))
+# for index in lst:
+#     f.write(index + '\t')
+#
+# print(lst)
+# f.close()
 
-       reg2 = (r'(([+]*[7])'
-               r'(([0-9]{10})|'
-               r'([ ][(][0-9]{3}[)][ ]|'
-               r'[ ][0-9]{3}[ ])'
-               r'[0-9]{3}'
-               r'(([ ]|[-])[0-9]{2}([ ]|[-])[0-9]{2}|)))')
-       print(re.findall(reg,pas))
-       mat = re.search(reg2,pas)
-       print(mat[1])
 
-try:
-       regu()
-except (TypeError, ValueError):
-    print("Не верный формат")
+# f = open("text2.txt", 'w')
+# f.write("Замены строки с текстом файле;\nизменить строку в списке;\nзаписать список в фаил")
+# f.close()
+# f = open("text2.txt", 'r')
+# read_file = f.readlines()
+# read_file[1] = "Hello world\n"
+# print(read_file)
+# f.close()
+# f = open("text2.txt", 'w')
+# f.writelines(read_file)
+# f.close()
+
+# f = open("text2.txt", 'w')
+# f.write("Замены строки с текстом файле;\nизменить строку в списке;\nзаписать список в фаил")
+# f.close()
+# f = open("text2.txt", 'r')
+# in_put = int(input("Числл: "))
+# read_file = f.readlines()
+# if 0 <= in_put < len(read_file):
+#     del read_file[in_put]
+# else:
+#     print("инедкс введен не коректно")
+# print(read_file)
+# f.close()
+# f = open("text2.txt", 'w')
+# f.writelines(read_file)
+# f.close()
+
+
+# f = open("text.txt")
+# print(f.read(3))
+# print(f.tell())  # позиция условного курсора
+# print(f.seek(1))
+# print(f.read())
+# f.close()
+
+# f = open("text.txt", 'r+')
+# print(f.write('I am learning Python'))
+# print(f.seek(3))
+# print(f.write('-new string-'))
+# print(f.tell())
+# f.close()
+
+# with open('text.txt', 'w+') as f:
+#     print(f.write('0123456789'))
+# with open('text.txt', 'r') as f:
+#     for line in f:
+#         print(line[:3])
+
+# file = "res_1.txt"
+# lst = [4.5,2.8,3.9,1.0,0.3,4.33,7.777]
+# def get_line(lt):
+#     return " ".join(map(str,lt))
+#
+#
+# with open(file, 'w') as f:
+#     f.write(get_line(lst))
+#
+# print("Done!")
+#
+# with open(file, 'r') as f:
+#     nums = f.read()
+# print(nums)
+#
+# nums_list = list(map(float, nums.split()))
+# print((nums_list))
+# print(sum(nums_list))
+
+# def longest_words(file):
+#     with open(file, 'r',encoding='utf-8') as text:
+#         w = text.read().split()
+#         max_length = len(max(w,key=len))
+#         res = [word for word in w if len(word) == max_length]
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+# print(longest_words("text.txt"))
+
+# read_file = "one.txt"
+# write_file = "two.txt"
+# third = "three.txt"
+# with open(read_file,'r') as f1, open(write_file, 'r') as f2,open(third,'w') as f3:
+#     file_1 = f1.readlines()
+#     file_2 = f2.readlines()
+#     f4 = file_1 + file_2
+#     f3.writelines(f4)
+
+
+
+# test = "Строка №1\Строка №2\nСтрока №3\nСтрока №4\nСтрока №5"
+# with open(read_file,'w') as f:
+#     f.write(text)
+
+# with open(read_file,'r') as fr, open(write_file, 'w') as fw:
+#     for line in fr:
+#         line = line.replace("Строка", "Линия -")
+#         fw.write((line))
+
+# dz_text = "Замены строки с текстом файле;\nизменить строку в списке;\nзаписать список в фаил"
+# dz_file = 'dz.txt'
+# input1 = int(input("1: ")) -1
+# input2 = int(input("2: ")) -1
+# with open(dz_file,'w') as f:
+#     f.write(dz_text)
+#
+# with open(dz_file,'r') as fr:
+#     read_line = fr.readlines()
+#     fr1 = read_line[input1]
+#     fr2 = read_line[input2]
+#     fr3 = fr1.replace(fr1,fr2)
+#
+# print(read_line)
+
+# Модули OS И OS.PATH
+
+# import os
+# import os.path
+
+# print(os.getcwd()) #  возврщает путь к текущей рабочей деректории
+# print(os.listdir()) # список файлов и деректорий
+# print(os.listdir("..")) # выход на уровень выше
+# os.mkdir("333") # создание директории
+# os.makedirs("22/33/44") # слздаст промежуточные дериктории и конечную
+
+# os.rmdir("22") # удоление папок
+# os.rename("2", 'new') # переименовывает файли
+# os.rename('new','3/new') # перемещение файла
+# os.rename() # премещает фаил и создает в папку
+# os.remove('text.txt') # удоление файла
+
+
+# for root, dirs, files in os.walk("3"):
+#     print("Root:", root)
+#     print("Subdirs", dirs)
+#     print("Files", files)
+#     print()
+
+
+# def remove_empty_rirs(root_tree):
+#     print(f"Удаление пустых дурикторий в ветви {root_tree}")
+#     print('-' * 50)
+#     for root, dirs, files in os.walk(root_tree):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f'Директория {root} удалиена')
+#     print('-' * 50)
+#
+#
+# remove_empty_rirs("3")
+
+
+
+# import os
+
+# print(os.path.split(r'C:\piton\3\text1.txt'))
+#
+# print(os.path.dirname(r'C:\piton\3\text1.txt'))
+# print(os.path.basename(r'C:\piton\3\text1.txt'))
+#
+# print(os.path.join('C:\piton','3','text1.txt'))
+
+# import os
+
+# dirs = [r'Work\F1',r'Work\F2\F21',]
+# for d in dirs:
+#     os.makedirs(d)
+
+# files = {
+#     'Work': ['w.txt'],
+#     r'Work\F1': ['f11.txt','f12.txt','f13.txt'],
+#     r'Work\F2\F21': ['f211.txt','f212.txt']
+# }
+# for d, file in files.items():
+#     for f in file:
+#         file_path = os.path.join(d,f)
+#         open(file_path, 'w').close()
+#
+# files_with_text = [r'Work\w.txt',r'Work\F1\f11.txt',r'Work\F1\f12.txt',r'Work\F1\f13.txt',r'Work\F2\F21\f211.txt',r'Work\F2\F21\f212.txt']
+#
+# for file in files_with_text:
+#     with open(file,'w') as f:
+#         f.write(f'same sample text for {file} file')
+#
+#
+# def print_tree(root, topdown):
+#     print(f"обход {root} {'сверху в низ'if topdown else'снизу в верх'}")
+#     for root, dirs, fls in os.walk(root,topdown):
+#         print(root)
+#         print(dirs)
+#         print(fls)
+#     print("-" * 50)
+#
+# print_tree("Work", False)
+# print_tree("Work", True)
+
+
+
+
+# Work\w.txt
+# Work\F1\f11.txt
+# Work\F1\f12.txt
+# Work\F1\f13.txt
+# Work\F2\F21\f211.txt
+# Work\F2\F21\f212.txt
+
+# import os
+# import time
+#
+# # print(os.path.exists(r'C:\piton\Work\F2\F21\f212.txt')) # возврощает True , елси path указывает
+# # # на сущесвтует путь в файловой системы
+# # print(os.path.isfile(r'C:\piton\Work\F2\F21\f212.txt')) # проверка на наличие по задонному пути файла
+# # print(os.path.isdir(r'C:\piton\Work\F2\F21\f212.txt')) # проверка по задоному пути папки
+#
+# path = 'main.py'
+# print(os.path.getsize(path) / 1024) # в кбайтах
+# print(os.path.getmtime(path)) # время последнего изменения
+# print(os.path.getatime(path)) # последнее доступ к файлу
+# print(os.path.getctime(path)) # время созданиея файла
+#
+# c = os.path.getctime(path)
+# print('последнее изменения ',time.strftime("%d.%m.%Y, %H.%M.%S", time.localtime(os.path.getmtime(path))))
+# print('доступ ',time.strftime("%d.%m.%Y, %H.%M.%S", time.localtime(os.path.getatime(path))))
+# print('создание ',time.strftime("%d.%m.%Y, %H.%M.%S", time.localtime(os.path.getctime(path))))
+
+# file_path = r'C:\piton\3\text1.txt'
+#
+# if os.path.exists(file_path):
+#     dirs, name = os.path.split(file_path)
+#     atime = os.path.getmtime((file_path))
+#     print(f'{name} ({dirs}) время последнего доступа к файлу {atime}')
+# else:
+#     print(f'Фаил {file_path} не существует')
+
+# Рекурсия
+
+# def elevator(n):
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print("=>", n)
+#     elevator(n - 1)
+#     print(n, end=" ")
+#
+#
+# n1 = int(input("на каком вы етаже: "))
+# elevator(n1)
+
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res += i
+#     return res
+
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         return lst[0]
+#     else:
+#         return lst[0] + sum_list(lst[1:])
+#
+#
+# print(sum_list([1,2,3,4,5]))
+
+# def to_str(n, base):
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]
+#     else:
+#         return to_str(n // base, base) + convert[n % base]
+#
+# print(to_str(105,16))
+
+
+# s = '\n Ежевику для ежат \n Принесли два ежа. \n Ежевику еле-еле \n Ежата возле ели сьели'
+# s1 = s.split(" ")
+# count = 0
+# for i in s1:
+#     if i[0] == 'Е' or i[0] == 'е':
+#         count += 1
+# print('Тестовый пример: ', s,'('+ str(count),' слова)')
+# print('Количество слов: ',count)
+
+
