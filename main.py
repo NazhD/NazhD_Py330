@@ -2835,39 +2835,89 @@ import re
 # p2.print_info()
 # p2.add_skill(3)
 
-dz_text = ("Замены строки с текстом файле;\n"
-           "изменить строку в списке;\n"
-           "записать список в фаил;\n")
-dz_file = 'dz.txt'
+# dz_text = ("Замены строки с текстом файле;\n"
+#            "изменить строку в списке;\n"
+#            "записать список в фаил;\n")
+# dz_file = 'dz.txt'
+#
+# with open(dz_file,'w') as f:
+#     f.write(dz_text)
+#
+# dz_text2 = dz_text
+#
+# with open(dz_file,'r') as fr:
+#     print("Изнанчальный текс:")
+#     print(dz_text2)
+#     dz_text2 = str()
+#     dz_text_clon = []
+#     dz_text_clon = fr.readlines()
+#
+#
+# print(dz_text2)
+# print("Заменить строки: ")
+# input1 = int(input("1: "))-1
+# input2 = int(input("2: "))-1
+#
+# while input1 >= len(dz_text_clon) or input1 < 0 or input1 == input2:
+#     input1 = int(input("Вторым значением выбрана "+str(input2+1)+" строка,"+" повторите 1-е значение: "))-1
+# while input2 >= len(dz_text_clon) or input2 < 0 or input1 == input2 :
+#     input2 = int(input("Первым значением выбрана "+str(input1+1)+" строка,"+" повторите 2-е значение: "))-1
+#
+# dz_text_clon[input1], dz_text_clon[input2] = dz_text_clon[input2],dz_text_clon[input1]
+# for i in dz_text_clon:
+#     dz_text2 += i
+#
+# with open(dz_file, 'w') as f2:
+#     f2.write(dz_text2)
+# print('После замены:')
+# print(dz_text2)
 
-with open(dz_file,'w') as f:
-    f.write(dz_text)
+# dz_class_car
 
-dz_text2 = dz_text
-
-with open(dz_file,'r') as fr:
-    print("Изнанчальный текс:")
-    print(dz_text2)
-    dz_text2 = str()
-    dz_text_clon = []
-    dz_text_clon = fr.readlines()
+class Car:
 
 
-print(dz_text2)
-print("Заменить строки: ")
-input1 = int(input("1: "))-1
-input2 = int(input("2: "))-1
+    def __init__(self, style, year_manu,manufacturer, eng_power, color, price):
+        self.style = style
+        self.year_manu = year_manu
+        self.manufacturer = manufacturer
+        self.eng_power = eng_power
+        self.color = color
+        self.price = price
 
-while input1 >= len(dz_text_clon) or input1 < 0 or input1 == input2:
-    input1 = int(input("Вторым значением выбрана "+str(input2+1)+" строка,"+" повторите 1-е значение: "))-1
-while input2 >= len(dz_text_clon) or input2 < 0 or input1 == input2 :
-    input2 = int(input("Первым значением выбрана "+str(input1+1)+" строка,"+" повторите 2-е значение: "))-1
 
-dz_text_clon[input1], dz_text_clon[input2] = dz_text_clon[input2],dz_text_clon[input1]
-for i in dz_text_clon:
-    dz_text2 += i
+    def set_year(self, year_manu):
+        self.year_manu = year_manu
 
-with open(dz_file, 'w') as f2:
-    f2.write(dz_text2)
-print('После замены:')
-print(dz_text2)
+
+    def set_color(self,color ):
+        self.color = color
+
+    def set_price(self,price):
+        self.price = price
+
+    def get_year(self):
+        return self.year_manu
+
+    def get_color(self,color):
+        self.color = color
+
+    def get_price(self,price):
+        self.price = price
+
+
+    def print_info(self):
+        print("Данные автомобиля".center(40,"*"))
+        print(f"Название модели: {self.style}\nГод выпуска: {self.year_manu}\n"
+              f"Производитель: {self.manufacturer}\nМощность двиготеля: {self.eng_power} л.с.\n"
+              f"Цвет машины: {self.color}\nЦена: {self.price} у.е")
+        print("=" * 40)
+
+
+
+car = Car("X7 M50I"," ","BMW","530"," "," ")
+car.set_color("Red")
+car.set_year("2023")
+car.set_price("5 000 000 000")
+car.print_info()
+print(car.get_year())
