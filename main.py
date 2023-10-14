@@ -2890,7 +2890,7 @@ class Car:
         self.year_manu = year_manu
 
 
-    def set_color(self,color ):
+    def set_color(self,color):
         self.color = color
 
     def set_price(self,price):
@@ -2899,11 +2899,11 @@ class Car:
     def get_year(self):
         return self.year_manu
 
-    def get_color(self,color):
-        self.color = color
+    def get_color(self):
+        return self.color
 
-    def get_price(self,price):
-        self.price = price
+    def get_price(self):
+        return self.price
 
 
     def print_info(self):
@@ -2921,3 +2921,5 @@ car.set_year("2023")
 car.set_price("5 000 000 000")
 car.print_info()
 print(car.get_year())
+print(car.get_color())
+print(car.get_price())
