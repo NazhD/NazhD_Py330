@@ -2874,52 +2874,276 @@ import re
 
 # dz_class_car
 
-class Car:
+# class Car:
+#
+#
+#     def __init__(self, style, year_manu,manufacturer, eng_power, color, price):
+#         self.style = style
+#         self.year_manu = year_manu
+#         self.manufacturer = manufacturer
+#         self.eng_power = eng_power
+#         self.color = color
+#         self.price = price
+#
+#
+#     def set_year(self, year_manu):
+#         self.year_manu = year_manu
+#
+#
+#     def set_color(self,color):
+#         self.color = color
+#
+#     def set_price(self,price):
+#         self.price = price
+#
+#     def get_year(self):
+#         return self.year_manu
+#
+#     def get_color(self):
+#         return self.color
+#
+#     def get_price(self):
+#         return self.price
+#
+#
+#     def print_info(self):
+#         print("Данные автомобиля".center(40,"*"))
+#         print(f"Название модели: {self.style}\nГод выпуска: {self.year_manu}\n"
+#               f"Производитель: {self.manufacturer}\nМощность двиготеля: {self.eng_power} л.с.\n"
+#               f"Цвет машины: {self.color}\nЦена: {self.price} у.е")
+#         print("=" * 40)
+#
+#
+#
+# car = Car("X7 M50I"," ","BMW","530"," "," ")
+# car.set_color("Red")
+# car.set_year("2023")
+# car.set_price("5 000 000 000")
+# car.print_info()
+# print(car.get_year())
+# print(car.get_color())
+# print(car.get_price())
+
+# import os
+# dir_name = "" # имя папки
+# obj = os.listdit(dir_name)
+# print(obj)
+#
+# for ob in obj:
+#     p = os.path.join(dir_name, ob)
+#     if os.path.isfile(p):
+#         print(f"{ob} - file - {os.path.getsize(p)}")
+#     elif os.path.isdir(p):
+#         print(f"{ob} - dir")
 
 
-    def __init__(self, style, year_manu,manufacturer, eng_power, color, price):
-        self.style = style
-        self.year_manu = year_manu
-        self.manufacturer = manufacturer
-        self.eng_power = eng_power
-        self.color = color
-        self.price = price
+# class Point:
+#     count = 0
+#     def __init__(self,x,y):
+#         self.x = x
+#         self.y = y
+#         Point.count += 1
+#
+#
+# p1 = Point(5, 10)
+# p2 = Point(2 , 8)
+# p3 = Point(7,12)
+# print(p3.count)
+# print(Point.count)
+# print(p1.x)
 
 
-    def set_year(self, year_manu):
-        self.year_manu = year_manu
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.nane = name
+#         print(f"Инициализация робота: {self.nane}")
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(f"{self.nane} выключается!")
+#         Robot.k -= 1
+#         if Robot.k == 0:
+#             print(f"{self.nane} был последним")
+#         else:
+#             print(f"Роботоющих роботов осталось: {Robot.k}")
+#
+#
+#     def say_hi(self):
+#         print(f"Приветсвую! Меня зовут {self.nane}")
+#
+# droid1 = Robot("R2-D2")
+# droid1.say_hi()
+# print(f"Численность роботов: {Robot.k}")
+# droid2 = Robot("C-3PO")
+# droid2.say_hi()
+# print(f"Численность роботов: {Robot.k}")
+#
+# droid3 = Robot("C-O")
+# droid3.say_hi()
+# print(f"Численность роботов: {Robot.k}")
+#
+# print(f"\nЗдесь роботы могут проделать какуюто работу\n")
+#
+# print(f"Роботы закончили свою работу.Давайте их выключим.")
+# del droid1
+# del droid2
+# del droid3
+# print(f"Численность роботов: {Robot.k}")
 
 
-    def set_color(self,color):
-        self.color = color
 
-    def set_price(self,price):
-        self.price = price
+# class Point:
+#     __slots__ = ("__x","__y")
+#
+#     def __init__(self,x,y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def __check_value(s):
+#         if isinstance(s,int) or isinstance(s,float):
+#             return True
+#         return False
+#     def set_y(self,y):  # устонавливаем координаты
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_y(self):    # получаем координаты
+#         return self.__y
+#
+#     def set_x(self,x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_x(self):
+#         return self.__x
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.__dict__)
+# # # p1.set_coord(10,50)
+# # print(p1.__dict__)
+# # print(p1.get_coord())
+# # # print(Point.__dict__)
+# # p1.set_x("fd")
+# # print(p1.get_x())
+# # print(p1._Point__x)
+# # print(p1.__dict__)
+# # p1.set_x(55)
+# print(p1.get_y())
 
-    def get_year(self):
-        return self.year_manu
 
-    def get_color(self):
-        return self.color
+# class Point:
+#     def __init__(self,x,y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def __set_x(self,x):
+#         if isinstance(x, (int, float)):
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
+#
+#     def __get_x(self):
+#         return self.__x
+#
+#     def __del_x(self):
+#         print(f"Удаление свойства {self.x}")
+#         del self.__x
+#
+#     x = property(__get_x, __set_x, __del_x)
+#
+# p1 = Point(5,10)
+# p1.x = 70
+# print(p1.x)
+# del  p1.x
+# print(p1.__dict__)
 
-    def get_price(self):
-        return self.price
+#
+# class Point:
+#     def __init__(self,x,y):
+#             self.__x = x
+#             self.__y = y
+#     @property
+#     def x(self):
+#         return self.__x
+#
+#     @x.setter
+#     def x(self,x):
+#         if isinstance(x, (int, float)):
+#             self.__x = x
+#         else:
+#             raise ValueError("Неверный формат данных")
+#
+#
+#     @x.deleter
+#     def x(self):
+#         print(f"Удаление свойства {self.x}")
+#         del self.__x
+#
+#     # x = property(__get_x, __set_x, __del_x)
+#
+# p1 = Point(5,10)
+# p1.x = 70
+# print(p1.x)
+# del  p1.x
+# print(p1.__dict__)
 
 
-    def print_info(self):
-        print("Данные автомобиля".center(40,"*"))
-        print(f"Название модели: {self.style}\nГод выпуска: {self.year_manu}\n"
-              f"Производитель: {self.manufacturer}\nМощность двиготеля: {self.eng_power} л.с.\n"
-              f"Цвет машины: {self.color}\nЦена: {self.price} у.е")
-        print("=" * 40)
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.kg = 0
+#         if isinstance(kg, (int, float)):
+#             self.__kg = kg
+#         else:
+#             self.kg = 0
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self,new_kg):
+#         if isinstance(new_kg, (int,float)):
+#             self.__kg = new_kg
+#         else:
+#             print("Килограммы задаются только числами")
+#
+#     def to_pounds(self):
+#         return self.__kg * 2.205
+#
+#
+# weight = KgToPounds(12)
+# print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
+# weight.kg = 41
+# print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
+# weight.kg = "десять"
+# print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
+
+class Pound:
+    def __init__(self,kg):
+        self.__kg = kg
+
+    @property
+    def kg(self):
+        return self.__kg
+    @kg.setter
+    def kg(self,n_kg):
+        try:
+            self.__kg = int(n_kg)
+            print(f"{self.__kg} kg => {round(self.__kg * 2.2,2)} pounds")
+        except ValueError:
+            return print("Введите число")
 
 
+vod = input("=> ")
+p = Pound(0)
+p.kg = vod
 
-car = Car("X7 M50I"," ","BMW","530"," "," ")
-car.set_color("Red")
-car.set_year("2023")
-car.set_price("5 000 000 000")
-car.print_info()
-print(car.get_year())
-print(car.get_color())
-print(car.get_price())
