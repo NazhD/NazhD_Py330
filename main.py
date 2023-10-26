@@ -3266,13 +3266,11 @@ import re
 
 class Figure:
     def __init__(self, color: str="цвет"):
-        self.color = color
+        self.__color = color
 
-        def __str__(self):
-            return f"({self.color})"
-    # @property
-    # def color(self):
-    #     return self.__color
+    @property
+    def color(self):
+        return self.__color
 
 
 class Fig_s(Figure):
