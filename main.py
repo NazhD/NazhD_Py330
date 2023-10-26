@@ -3126,24 +3126,196 @@ import re
 # print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
 # weight.kg = "десять"
 # print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
+#
+# class Pound:
+#     def __init__(self,kg):
+#         self.__kg = kg
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#     @kg.setter
+#     def kg(self,n_kg):
+#         try:
+#             self.__kg = int(n_kg)
+#             print(f"{self.__kg} kg => {round(self.__kg * 2.2,2)} pounds")
+#         except ValueError:
+#             print("Введите число")
+#
+#
+# vod = input("=> ")
+# p = Pound(0)
+# p.kg = vod
 
-class Pound:
-    def __init__(self,kg):
-        self.__kg = kg
+# 24.10.2023
 
-    @property
-    def kg(self):
-        return self.__kg
-    @kg.setter
-    def kg(self,n_kg):
-        try:
-            self.__kg = int(n_kg)
-            print(f"{self.__kg} kg => {round(self.__kg * 2.2,2)} pounds")
-        except ValueError:
-            return print("Введите число")
+# import re
+#
+# class UserData:
+#     def __init__(self, fio,old,ps,weight):
+#         self.verify_old(old)
+#         self.verify_ps(ps)
+#
+#         self.fio = fio
+#         self.__old = old
+#         self.__ps = ps
+#         self.__weight = weight
+#
+#
+#     @staticmethod
+#     def verify_fio(fio):
+#         if not isinstance(fio, str):
+#             raise TypeError("ФИО должно быть строкой")
+#         f = fio.split()
+#         print(f)
+#         if len(f) != 3:
+#             raise TypeError("Неверный формат")
+#         letters = "".join(re.findall("[a-zа-яё-]",fio,re.IGNORECASE))
+#         for s in f:
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("в фио можно использовать только буквы и дифис")
+#         print(letters)
+#
+#     @staticmethod
+#     def verify_old(old):
+#         if not isinstance(old, int) or old < 14 or old > 120:
+#             raise TypeError("Возраст должен быть числом")
+#
+#     @staticmethod
+#     def verify_ps(ps):
+#         if not isinstance(ps, str):
+#             raise TypeError("СТрока")
+#         s = ps.split()
+#         if len(s) != 2 or len(s[0]) != 4 or len(s[1]) != 6:
+#             raise TypeError("неверный формат паспорта")
+#         for p in s:
+#             if not p.isdigit():
+#                 raise TypeError("числа")
+#
+#     @property
+#     def fio(self):
+#         return self.__fio
+#
+#     @fio.setter
+#     def fio(self, fio):
+#         self.verify_fio(fio)
+#         self.__fio = fio
+#
+#
+# p1 = UserData("Волков Игорь Николаевич",26,"1234 567890",808)
+# p1.fio = ("Рыцарев Игорь Николаевич")
+# print(p1.fio)
 
 
-vod = input("=> ")
-p = Pound(0)
-p.kg = vod
+# Наследование
+# Базовый класс(родителький, супрекласс)
+#      Дочерний (класс-наследник,подкласс)
 
+# class Point:
+#     """
+#     Точка в двумерном пространстве
+#     """
+#
+#     def __init__(self,x,y):
+#         self.x = x
+#         self.y = y
+#
+#
+# print(issubclass(Point, object))
+# print(Point.__dict__)
+#
+#
+# class Point:
+#
+#     def __init__(self,x,y):
+#         self.x = x
+#         self.y = y
+#
+#     def __str__(self):
+#         return f"({self.x,self.y})"
+#
+#
+# class Prop:
+#     def __init__(self,sp: Point,ep: Point,color: str="red", width: int=1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+
+#
+#         def get_width(self):
+#             return self._width
+#
+#
+# class Line(Prop):
+#     def __init__(self,*args):
+#         super().__init__(*args)
+#
+#
+#     def draw_line(self):
+#         print(f"рисование лини: {self._sp},{self._ep},{self._color},{self._width}")
+# class Rect(Prop):
+#     def draw_rect(self):
+#         print(f"рисование прямоуголника: {self._sp},{self._ep},{self._color},{self._width}")
+#
+#
+#
+# line = Line(Point(1,2), Point(10,20), "grey", 33)
+# line.draw_line()
+# print(Line._color)
+
+class Figure:
+    def __init__(self, color: str="цвет"):
+        self.color = color
+
+        def __str__(self):
+            return f"({self.color})"
+    # @property
+    # def color(self):
+    #     return self.__color
+
+
+class Fig_s(Figure):
+    def __init__(self, s: int="число", t: int="число или 0", fig: str="прямоуголник,круг", *args: Figure):
+        super().__init__(*args)
+        self.verify_s(s)
+        self.verify_t(t)
+        self.verify_error(s)
+        self.verify_error(t)
+
+        self.s = s
+        self.t = t
+        self.fig = fig
+
+    @staticmethod
+    def verify_s(s):
+        if not isinstance(s,(int,float)):
+            raise TypeError("Ведите число")
+
+    @staticmethod
+    def verify_t(t):
+        if not isinstance(t,(int,float)):
+            raise TypeError("Ведите число")
+
+    @staticmethod
+    def verify_error(arg):
+        if arg < 0:
+            raise TypeError("введите число больше нуля")
+
+    @staticmethod
+    def plozh(fig,s,t):
+        if fig == "прямоуголник":
+            return s * t
+        elif fig == "круг":
+            return s**2 * 3.14
+        else:
+            raise TypeError("нет такой фигуры")
+
+    def print_info(self):
+        print(f"Площадь {self.fig}а равна:  {self.plozh(self.fig,self.s,self.t)} у.е. и имеет {self.color} цвет")
+
+
+l = Fig_s(5,4,"прямоуголник","серый")
+l2 = Fig_s(5,0,"круг","серый")
+l.print_info()
+l2.print_info()
