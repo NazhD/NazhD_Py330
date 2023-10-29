@@ -3633,48 +3633,67 @@ import re
 
 
 class Arifmetika:
-    def __init__(self,arg1,arg2):
-        self.args_error(arg1)
-        self.args_error(arg2)
+    def __init__(self,arg1=None,arg2=None):
+        self.kat1 = arg1
+        self.kat2 = arg2
 
-        self.args1 = arg1
-        self.args2 = arg2
+    @property
+    def kat1(self):
+        return self.__arg1
+    @kat1.setter
+    def kat1(self,arg1):
+        self.args_error(arg1)
+        self.__arg1 = arg1
+
+    @property
+    def kat2(self):
+        return self.__arg2
+    @kat2.setter
+    def kat2(self,arg2):
+        self.args_error(arg2)
+        self.__arg2 = arg2
+
 
     @staticmethod
     def args_error(er):
+        if er == None:
+            raise ValueError("Необходимо 2 аргумента")
         if not isinstance(er,(int,float)):
             raise TypeError("Необходимо ввести число")
         if er <= 0:
             raise ValueError("Введите число больше нуля")
 
+
     def mnozh_args(self):
-        return self.args1 * self.args2
+        return self.kat1 * self.kat2
 
     def sum_args(self):
-        return self.args1 + self.args2
+        return self.kat1 + self.kat2
 
     def print_sum(self):
         return (f"Сумма катетов = {self.sum_args()}\n")
-    
+
     def print_mnozh(self):
         return (f"Множество катетов = {self.mnozh_args()}\n")
 
 
 class Geometry(Arifmetika):
-    def __init__(selfs,args1,args2):
-        super().__init__(args1,args2)
+    def __init__(selfs,arg1=None,arg2=None):
+        super().__init__(arg1,arg2)
 
     def s_args(self):
         return  f"Площадь треугольника = {self.mnozh_args() / 2}\n"
 
     def gipotenuza(self):
-        return f"Гипотенуза треугольника = {round((self.args1 ** 2 + self.args2 ** 2) ** 0.5,2)}\n"
+        return f"Гипотенуза треугольника = {round((self.kat1 ** 2 + self.kat2 ** 2) ** 0.5,2)}\n"
 
     def print_info(self):
         print(f"{self.print_sum()}{self.print_mnozh()}{self.gipotenuza()}{self.s_args()}")
 
-
-g = Geometry(3,10)
+g = Geometry(1,1)
+g.print_info()
+g.kat1 = 3
+g.kat2 = 30
 g.print_info()
 
 
