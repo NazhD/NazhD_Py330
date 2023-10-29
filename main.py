@@ -3264,56 +3264,421 @@ import re
 # line.draw_line()
 # print(Line._color)
 
-class Figure:
-    def __init__(self, color: str="цвет"):
-        self.__color = color
+# class Figure:
+#     def __init__(self, color: str="цвет"):
+#         self.__color = color
+#
+#     @property
+#     def color(self):
+#         return self.__color
+#
+#
+# class Fig_s(Figure):
+#     def __init__(self, s: int="число", t: int="число или 0", fig: str="прямоуголник,круг", *args: Figure):
+#         super().__init__(*args)
+#         self.verify_s(s)
+#         self.verify_t(t)
+#         self.verify_error(s)
+#         self.verify_error(t)
+#
+#         self.s = s
+#         self.t = t
+#         self.fig = fig
+#
+#     @staticmethod
+#     def verify_s(s):
+#         if not isinstance(s,(int,float)):
+#             raise TypeError("Ведите число")
+#
+#     @staticmethod
+#     def verify_t(t):
+#         if not isinstance(t,(int,float)):
+#             raise TypeError("Ведите число")
+#
+#     @staticmethod
+#     def verify_error(arg):
+#         if arg < 0:
+#             raise TypeError("введите число больше нуля")
+#
+#     @staticmethod
+#     def plozh(fig,s,t):
+#         if fig == "прямоуголник":
+#             return s * t
+#         elif fig == "круг":
+#             return s**2 * 3.14
+#         else:
+#             raise TypeError("нет такой фигуры")
+#
+#     def print_info(self):
+#         print(f"Площадь {self.fig}а равна:  {self.plozh(self.fig,self.s,self.t)} у.е. и имеет {self.color} цвет")
+#
+#
+# l = Fig_s(5,4,"прямоуголник","серый")
+# l2 = Fig_s(5,0,"круг","серый")
+# l.print_info()
+# l2.print_info()
 
-    @property
-    def color(self):
-        return self.__color
+#
+# class Point:
+#
+#     def __init__(self,x,y):
+#         self.x = x
+#         self.y = y
+#
+#
+#     def __str__(self):
+#         return f"({self.x,self.y})"
+#
+#
+#     def is_digit(self):
+#         if isinstance(self._x, (int,float)) and isinstance(self._y,(int,float)):
+#             return True
+#         return False
+#
+#     def is_int(self,sp,ep):
+#         if isinstance(self.__x, (int)) and isinstance(self.__y,(int)):
+#             return True
+#         return False
+#
+# class Prop:
+#     def __init__(self,sp: Point,ep: Point,color: str="red", width: int=1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_cord(self,sp,ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Коорджинаты должыны быть чилсами")
+#
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         super().__init__(*args)
+#
+#
+#     def draw_line(self):
+#         print(f"рисование лини: {self._sp},{self._ep},{self._color},{self._width}")
+#
+#     def set_cord(self,sp,ep):
+#         if sp.is_int() and ep.is_int():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Коорджинаты должыны быть чилсами")
+# class Rect(Prop):
+#     def draw_rect(self):
+#         print(f"рисование прямоуголника: {self._sp},{self._ep},{self._color},{self._width}")
+#
+# l = Line(Point(1,2),Point(10,20),"grey",5)
+# l.draw_line()
+# l.set_cord(Point(20, 30),Point(100,200))
+# l.draw_line()
 
 
-class Fig_s(Figure):
-    def __init__(self, s: int="число", t: int="число или 0", fig: str="прямоуголник,круг", *args: Figure):
-        super().__init__(*args)
-        self.verify_s(s)
-        self.verify_t(t)
-        self.verify_error(s)
-        self.verify_error(t)
+# class Rect:
+#     def __init__(self,w,h):
+#         self.w = w
+#         self.h = h
+#
+#     def show_rect(self):
+#         print(f"Прямоуголник:\nШирина: {self.w}\nВысота: {self.h}")
+#
+# class ReFon(Rect):
+#     def __int__(self, w, h, back):
+#         super().__init__(w,h)
+#         self.fon = back
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print("фон:", self.fon)
+#
+#
+# shape1 = ReFon(100, 200,"red")
+# shape1.show_rect()
 
-        self.s = s
-        self.t = t
-        self.fig = fig
+# class Vector(list):
+#     def __str__(self):
+#         return " ".join(map(str,self))
+#
+#
+# v = Vector([1,2,3])
+# print(v)
+# print(type(v))
+
+
+# прегрузка методов
+
+# def func(a,b=None,c=None):
+#     ...
+#
+# func(1,2,3)
+# func(1,2)
+# func(1)
+#
+#
+# class Point:
+#
+#     def __init__(self,x,y):
+#         self.x = x
+#         self.y = y
+#
+#
+#     def __str__(self):
+#         return f"({self.x,self.y})"
+#
+#
+#     def is_digit(self):
+#         if isinstance(self._x, (int,float)) and isinstance(self._y,(int,float)):
+#             return True
+#         return False
+#
+#     def is_int(self,sp,ep):
+#         if isinstance(self.__x, (int)) and isinstance(self.__y,(int)):
+#             return True
+#         return False
+#
+# class Prop:
+#     def __init__(self,sp: Point,ep: Point,color: str="red", width: int=1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_cord(self,sp,ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Коорджинаты должыны быть чилсами")
+#
+#
+# class Line(Prop):
+#
+#     def draw_line(self):
+#         print(f"рисование лини: {self._sp},{self._ep},{self._color},{self._width}")
+
+
+
+
+# l = Line(Point(1,2),Point(10,20),"grey",5)
+# l.set_cord(Point(20, 30),Point(100,200))
+# l.draw_line()
+# l.set_cord(уз=Point)
+
+
+
+# class Point:
+#     def __init__(self,x,y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x,self.__y})"
+#
+#     def is_digit(self):
+#         if isinstance(self.__x, (int,float)) and isinstance(self.__y,(int,float)):
+#             return True
+#         return False
+#
+#     def is_int(self,sp,ep):
+#         if isinstance(self.__x, int) and isinstance(self.__y,int):
+#             return True
+#         return False
+#
+# class Prop:
+#     def __init__(self,sp: Point,ep: Point,color: str="red", width: int=1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def drow(self): # абстракный метод
+#         raise NotImplementedError("В дочернем классе должен быть определен метод drow()")
+#
+#     def set_cord(self,sp,ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Коорджинаты должыны быть чилсами")
+#
+# class Line(Prop):
+#     def draw(self):
+#         print(f"рисование лини: {self._sp},{self._ep},{self._color},{self._width}")
+#
+#
+# class Rect(Prop):
+#     def draw(self):
+#         print(f"рисование прямоуголник: {self._sp},{self._ep},{self._color},{self._width}")
+#
+#
+# figs = list()
+# figs.append(Line(Point(0,0),Point(10,10)))
+# figs.append(Line(Point(10,10),Point(20,10)))
+# figs.append(Rect(Point(50,50),Point(30,30)))
+#
+# for f in figs:
+#     f.draw()
+#
+# from math import pi
+# class Table:
+#     def __init__(self,w=None,h=None,r=None):
+#         if r is None:
+#             if h is None:
+#                 self._w = self._h = w
+#             else:
+#                 self._w = w
+#                 self._h = h
+#         else:
+#             self._r = r
+#
+#     def calc_area(self):
+#         raise NotImplementedError("В дочернем классе должно быть определиен метод calc_area()")
+#
+#
+# class SqTable(Table):
+#     def calc_area(self):
+#         return self._w * self._h
+#
+# class RoundTable(Table):
+#     def calc_area(self):
+#         return round(pi * self._r ** 2,2)
+#
+#
+# t = SqTable(20,10)
+# print(t.__dict__)
+# print(t.calc_area())
+#
+# t2 = SqTable(20)
+# print(t2.__dict__)
+# print(t2.calc_area())
+#
+# t3 = RoundTable(r=20)
+# print(t3.calc_area())
+
+#
+# from abc import ABC, abstractmethod
+#
+# class Chess(ABC):
+#     def draw(self):
+#         print("Фигура")
+#
+#     @abstractmethod
+#     def move(self):
+#         pass
+#
+# class Quean(Chess):
+#     def move(self):
+#         print("Ferz peremechen")
+#
+# q = Quean()
+# q.move()
+
+# from abc import ABC, abstractmethod
+#
+# class Currency(ABC):
+#     def __init__(self,value):
+#         self.value = value
+#
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
+#
+#     @abstractmethod
+#     def print_value(self):
+#         print(self.value, end=" ")
+#
+# class Euro(Currency):
+#     rate_to_rub = 90.14
+#     suffix = "EURO"
+#
+#     def convert_to_rub(self):
+#         return self.value * Euro.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#
+#         print(f"{Euro.suffix} = {self.convert_to_rub():2f} RUB")
+#
+#
+#
+#
+# class Dollar(Currency):
+#     rete_to_rub = 74.16
+#     suffix = "USD"
+#
+#     def convert_to_rub(self):
+#         return self.value * Dollar.rete_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Dollar.suffix, end=" ")
+#
+#
+#
+# d = [Dollar(5),Dollar(10),Dollar(50),Dollar(100),]
+# e = [Euro(5),Euro(50),Euro(500),Euro(5000)]
+#
+# print("*" * 50)
+# for elem in d:
+#     elem.print_value()
+#     print(f"= {elem.convert_to_rub():.2f} RUB")
+# print("*" * 50)
+# for elem in e:
+#     elem.print_value()
+
+
+class Arifmetika:
+    def __init__(self,arg1,arg2):
+        self.args_error(arg1)
+        self.args_error(arg2)
+
+        self.args1 = arg1
+        self.args2 = arg2
 
     @staticmethod
-    def verify_s(s):
-        if not isinstance(s,(int,float)):
-            raise TypeError("Ведите число")
+    def args_error(er):
+        if not isinstance(er,(int,float)):
+            raise TypeError("Необходимо ввести число")
+        if er <= 0:
+            raise ValueError("Введите число больше нуля")
 
-    @staticmethod
-    def verify_t(t):
-        if not isinstance(t,(int,float)):
-            raise TypeError("Ведите число")
+    def mnozh_args(self):
+        return self.args1 * self.args2
 
-    @staticmethod
-    def verify_error(arg):
-        if arg < 0:
-            raise TypeError("введите число больше нуля")
+    def sum_args(self):
+        return self.args1 + self.args2
 
-    @staticmethod
-    def plozh(fig,s,t):
-        if fig == "прямоуголник":
-            return s * t
-        elif fig == "круг":
-            return s**2 * 3.14
-        else:
-            raise TypeError("нет такой фигуры")
+    def print_sum(self):
+        return (f"Сумма катетов = {self.sum_args()}\n")
+    
+    def print_mnozh(self):
+        return (f"Множество катетов = {self.mnozh_args()}\n")
+
+
+class Geometry(Arifmetika):
+    def __init__(selfs,args1,args2):
+        super().__init__(args1,args2)
+
+    def s_args(self):
+        return  f"Площадь треугольника = {self.mnozh_args() / 2}\n"
+
+    def gipotenuza(self):
+        return f"Гипотенуза треугольника = {round((self.args1 ** 2 + self.args2 ** 2) ** 0.5,2)}\n"
 
     def print_info(self):
-        print(f"Площадь {self.fig}а равна:  {self.plozh(self.fig,self.s,self.t)} у.е. и имеет {self.color} цвет")
+        print(f"{self.print_sum()}{self.print_mnozh()}{self.gipotenuza()}{self.s_args()}")
 
 
-l = Fig_s(5,4,"прямоуголник","серый")
-l2 = Fig_s(5,0,"круг","серый")
-l.print_info()
-l2.print_info()
+g = Geometry(3,10)
+g.print_info()
+
+
+
+
+
+
