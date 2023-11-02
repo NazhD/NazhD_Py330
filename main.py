@@ -3697,78 +3697,335 @@
 # g.print_info()
 
 
-class Acaunt:
-    def __init__(self,name,pas,phon):
-        self.__name = name
-        self.__pas = pas
-        self.__phon = phon
+# class Acaunt:
+#     def __init__(self,name,pas,phon):
+#         self.__name = name
+#         self.__pas = pas
+#         self.__phon = phon
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self,name):
+#         self.__name = name
+#
+#     @property
+#     def pas(self):
+#         return self.__pas
+#
+#     @pas.setter
+#     def pas(self,pas):
+#         self.__pas = pas
+#
+#     @property
+#     def phon(self):
+#         return self.__phon
+#
+#     @phon.setter
+#     def phon(self,phon):
+#         self.__phon = phon
+#
+#     def print_info(self):
+#         print(f"Вариант с property: \n{self.name}\n{self.pas}\n{self.phon}")
+#
+#
+#
+# a = Acaunt("Vitya","12345","+7 *** *** ** **")
+# a.name = "Vika"
+# a.ps = "54321"
+# a.phon = "+7 903 333 33 33"
+# a.print_info()
+#
+#
+# class Acaunt2:
+#     def __init__(self,name,pas,phon):
+#         self.__name = name
+#         self.__pas = pas
+#         self.__phon = phon
+#
+#     def set_name(self,name):
+#         self.__name = name
+#
+#     def get_name(self):
+#         return self.__name
+#
+#     def set_ps(self,ps):
+#         self.__ps = ps
+#
+#     def get_ps(self):
+#         return self.__ps
+#
+#     def set_phon(self,phon):
+#         self.__phon = phon
+#
+#     def get_phon(self):
+#         return self.__phon
+#
+#     def print_info(self):
+#         print(f"Вариант через set и get: \n{self.__name}\n{self.__pas}\n{self.__phon}")
+#
+# a2 = Acaunt2("Vitya","12345","+7 *** *** ** **")
+# a2.set_name("Vika")
+# a2.set_ps("54321")
+# a2.set_phon("+7 903 333 33 33")
+# a2.print_info()
 
-    @property
-    def name(self):
-        return self.__name
 
-    @name.setter
-    def name(self,name):
-        self.__name = name
 
-    @property
-    def pas(self):
-        return self.__pas
 
-    @pas.setter
-    def pas(self,pas):
-        self.__pas = pas
 
-    @property
-    def phon(self):
-        return self.__phon
 
-    @phon.setter
-    def phon(self,phon):
-        self.__phon = phon
+# 02.11.2023
+# Миксины
+# class Displayer:
+#     @staticmethod
+#     def display(message):
+#         print(message)
+#
+# class LoggerMixin:
+#             def log(self,message, filename="logfile.txt"):
+#                 with open(filename,"a") as fh:
+#                     fh.write(message)
+#
+#             def display(self,message):
+#                 Displayer.display(message)
+#                 self.log(message)
+#
+#
+# class MySubClass(LoggerMixin,Displayer):
+#     def log(self,mssage,filename = ""):
+#         super().log(mssage,filename="subclass.txt")
+#
+# subclass = MySubClass()
+# subclass.display("1111111111122222222223333333")
+
+
+# class Goods:
+#     def __init__(self,name,weight, price):
+#         super().__init__()
+#         print("INIT GOODS")
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#
+#     def print_info(self):
+#         print(f"{self.name},{self.weight},{self.price}")
+#
+# class Mixinlog:
+#     ID = 0
+#
+#     def __init__(self):
+#         print("INIT MIXINLOG")
+#         Mixinlog.ID += 1
+#         self.id = Mixinlog.ID
+#
+#     def save_sell_log(self):
+#         print(f"{self.id}: товар был продан в 00:00 часов")
+#
+# class NoteBook(Goods,Mixinlog):
+#     ...
+#
+#
+# n = NoteBook("HP",1.5, 35000)
+# n.print_info()
+# n.save_sell_log()
+# n2 = NoteBook("HP",1.5, 35000)
+# n.save_sell_log()
+
+# class Point:
+#     def __init__(self,*args):
+#         self.__cords = args
+#
+#     def __len__(self):
+#         return len(self.__cords)
+#
+# p = Point(5,7)
+# print(len(p))
+# p2 = Point(2,4,9)
+# print(len(p2))
+
+# Перегрузка
+
+# Число секунд в одном дне 24*60*60 = 86400
+
+
+
+# c2 = Clock(100)
+# # c4 = Clock(300)
+
+# print(c2.get_format_time())
+# # c3 = c1 + c2 + c4
+# # c1 += c2
+# # print(c1.get_format_time())
+# # print(c3.get_format_time())
+# if c1 == c2:
+#     print("время одиниково")
+# else:
+#     print("время разное")
+# if c1 != c2:
+#     print("время разное")
+# else:
+#     print("время одинаково")
+
+# from random import choice, randint
+# class Cat:
+#     def __init__(self,name,age,pol):
+#         self.name = name
+#         self.age = age
+#         self.pol = pol
+#
+#     def __str__(self):
+#         if self.pol == "M":
+#             return f"{self.name} is good boy"
+#         elif self.pol == "F":
+#             return f"{self.name} is good girl"
+#         else:
+#             return f"{self.name} is good Kitty"
+#
+#     def __repr__(self):
+#         return f"Cat(name='{self.name}', age={self.age}, pol='{self.pol}'"
+#
+#     def __add__(self, other):
+#         if self.pol != other.pol:
+#             return  [Cat("No name",0,choice(["M","F"])) for _ in range(randint(1,5))]
+#         else:
+#             raise TypeError("Типы не совместимы")
+#
+#
+# cat1 = Cat("Tom",4,"M")
+# cat2 = Cat("Elsa",5,'F')
+# cat3 = Cat("Murzik",5,"M")
+# print(cat1)
+# print(cat2)
+# print(cat1 + cat2)
+
+# class Student:
+#     def __init__(self,name,*marks):
+#         self.name = name
+#         self.marks = list(marks)
+#
+#     def __getitem__(self, item):
+#         if 0 <= item < len(self.marks):
+#             return self.marks[item]
+#         else:
+#             return IndexError("неверный индекс")
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, int) or key < 0:
+#             raise TypeError("Не корекное занчение")
+#         if key >= len(self.marks):
+#             off = key +1 - len(self.marks)
+#             self.marks.extend([None] * off)
+#         self.marks[key] = value
+#
+#     def __delitem__(self, key):
+#         if not isinstance(key, int):
+#             raise TypeError("Индекс должен быть целым числом")
+#         del self.marks[key]
+#
+#
+# s1 = Student("Srgey",5,5,3,4,5)
+# # print(s1.marks[5])
+#
+# s1[3] = 4
+# del s1[2]
+# print(s1[3])
+
+# class Clock:
+#     __DAY = 86400
+#     def __init__(self,sec):
+#         if not isinstance(sec, int):
+#             raise ValueError("секунджы должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.sec %60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 60
+#         return f"{Clock.__get_form(h):}:{Clock.__get_form(m):}:{Clock.__get_form(s):}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return x if x > 9 else "0" + str(x)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+#         return self.sec == other.sec
+#         # if self.sec == other.sec:
+#         #     return True
+#         # return False
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError("ключ должен быть строкой")
+#
+#         if item == "hour":
+#             return (self.sec // 3600) % 24
+#         elif item == "min":
+#             return (self.sec // 60) % 60
+#         elif item == "sec":
+#             return self.sec % 60
+#         return "не верный ключ"
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise ValueError("ключ должен быть строкой")
+#         if not isinstance(value, int):
+#             raise ValueError("должно быть целым числом")
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 60
+#         if key == "hour":
+#             self.sec = s + 60 * m + value * 3600
+#         elif key == "min":
+#             self.sec = s + 60 * value + h * 3600
+#         elif key == "sec":
+#             self.sec = value + 60 * m + h * 3600
+#
+#
+#
+#
+# c1 = Clock(1000000)
+# print(c1.get_format_time())
+# c1["hour"] = 10
+# c1["min"] = 11
+# c1["sec"] = 12
+# print(c1["hour"],c1["min"],c1["sec"])
+
+
+class Student:
+
+    def __init__(self, name, Par):
+        self.name = name
+        self.Par = Par
+        self.print_info()
 
     def print_info(self):
-        print(f"Вариант с property: \n{self.name}\n{self.pas}\n{self.phon}")
+        print(f"{self.name} => {self.Par}")
+
+    class Parametr:
+        def __init__(self, model, proc, ram):
+            self.model = model
+            self.proc = proc
+            self.ram = ram
+
+        def __str__(self):
+            return f"{self.model}, {self.proc}, {self.ram}"
+
+
+stud1 = Student("Roman", Student.Parametr("HP","i7",32))
+stud2 = Student("Vladimir", Student.Parametr("HP","i5",16))
 
 
 
-a = Acaunt("Vitya","12345","+7 *** *** ** **")
-a.name = "Vika"
-a.ps = "54321"
-a.phon = "+7 903 333 33 33"
-a.print_info()
-
-
-class Acaunt2:
-    def __init__(self,name,pas,phon):
-        self.__name = name
-        self.__pas = pas
-        self.__phon = phon
-
-    def set_name(self,name):
-        self.__name = name
-
-    def get_name(self):
-        return self.__name
-
-    def set_ps(self,ps):
-        self.__ps = ps
-
-    def get_ps(self):
-        return self.__ps
-
-    def set_phon(self,phon):
-        self.__phon = phon
-
-    def get_phon(self):
-        return self.__phon
-
-    def print_info(self):
-        print(f"Вариант через set и get: \n{self.__name}\n{self.__pas}\n{self.__phon}")
-
-a2 = Acaunt2("Vitya","12345","+7 *** *** ** **")
-a2.set_name("Vika")
-a2.set_ps("54321")
-a2.set_phon("+7 903 333 33 33")
-a2.print_info()
 
