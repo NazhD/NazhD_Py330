@@ -3933,98 +3933,178 @@
 # del s1[2]
 # print(s1[3])
 
-# class Clock:
-#     __DAY = 86400
-#     def __init__(self,sec):
-#         if not isinstance(sec, int):
-#             raise ValueError("секунджы должны быть целым числом")
-#         self.sec = sec % self.__DAY
+# class Student:
 #
-#     def get_format_time(self):
-#         s = self.sec %60
-#         m = (self.sec // 60) % 60
-#         h = (self.sec // 3600) % 60
-#         return f"{Clock.__get_form(h):}:{Clock.__get_form(m):}:{Clock.__get_form(s):}"
+#     def __init__(self, name, Par):
+#         self.name = name
+#         self.Par = Par
+#         self.print_info()
 #
-#     @staticmethod
-#     def __get_form(x):
-#         return x if x > 9 else "0" + str(x)
+#     def print_info(self):
+#         print(f"{self.name} => {self.Par}")
 #
-#     def __add__(self, other):
-#         if not isinstance(other, Clock):
-#             raise ArithmeticError("правый оеперант должен быть типом данных Clock")
-#         return Clock(self.sec + other.sec)
+#     class Parametr:
+#         def __init__(self, model, proc, ram):
+#             self.model = model
+#             self.proc = proc
+#             self.ram = ram
 #
-#     def __eq__(self, other):
-#         if not isinstance(other, Clock):
-#             raise ArithmeticError("правый оеперант должен быть типом данных Clock")
-#         return self.sec == other.sec
-#         # if self.sec == other.sec:
-#         #     return True
-#         # return False
-#     def __ne__(self, other):
-#         return not self.__eq__(other)
-#
-#     def __getitem__(self, item):
-#         if not isinstance(item, str):
-#             raise ValueError("ключ должен быть строкой")
-#
-#         if item == "hour":
-#             return (self.sec // 3600) % 24
-#         elif item == "min":
-#             return (self.sec // 60) % 60
-#         elif item == "sec":
-#             return self.sec % 60
-#         return "не верный ключ"
-#
-#     def __setitem__(self, key, value):
-#         if not isinstance(key, str):
-#             raise ValueError("ключ должен быть строкой")
-#         if not isinstance(value, int):
-#             raise ValueError("должно быть целым числом")
-#         s = self.sec % 60
-#         m = (self.sec // 60) % 60
-#         h = (self.sec // 3600) % 60
-#         if key == "hour":
-#             self.sec = s + 60 * m + value * 3600
-#         elif key == "min":
-#             self.sec = s + 60 * value + h * 3600
-#         elif key == "sec":
-#             self.sec = value + 60 * m + h * 3600
+#         def __str__(self):
+#             return f"{self.model}, {self.proc}, {self.ram}"
 #
 #
-#
-#
-# c1 = Clock(1000000)
-# print(c1.get_format_time())
-# c1["hour"] = 10
-# c1["min"] = 11
-# c1["sec"] = 12
-# print(c1["hour"],c1["min"],c1["sec"])
+# stud1 = Student("Roman", Student.Parametr("HP","i7",32))
+# stud2 = Student("Vladimir", Student.Parametr("HP","i5",16))
+
+class Clock:
+    __DAY = 86400
+    def __init__(self,sec):
+        if not isinstance(sec, int):
+            raise ValueError("секунджы должны быть целым числом")
+        self.sec = sec % self.__DAY
+
+    def get_format_time(self):
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 60
+        return f"{Clock.__get_form(h):}:{Clock.__get_form(m):}:{Clock.__get_form(s):}"
+
+    @staticmethod
+    def __get_form(x):
+        return x if x > 9 else "0" + str(x)
+
+    def __add__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return Clock(self.sec + other.sec)
+    def __sub__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return Clock(self.sec - other.sec)
+
+    def __mul__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return Clock(self.sec * other.sec)
+
+    def __floordiv__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return Clock(self.sec // other.sec)
+
+    def __mod__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return Clock(self.sec % other.sec)
+
+    def __eq__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return self.sec == other.sec
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __gt__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return self.sec > other.sec
+
+    def __ge__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return self.sec >= other.sec
+
+    def __it__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return self.sec < other.sec
+
+    def __le__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("правый оеперант должен быть типом данных Clock")
+        return self.sec <= other.sec
+
+    def __getitem__(self, item):
+        if not isinstance(item, str):
+            raise ValueError("ключ должен быть строкой")
+
+        if item == "hour":
+            h = (self.sec // 3600) % 24
+            return Clock.__get_form(h)
+        elif item == "min":
+            m = (self.sec // 60) % 60
+            return Clock.__get_form(m)
+        elif item == "sec":
+            s = self.sec % 60
+            return Clock.__get_form(s)
+        return "не верный ключ"
+
+    def __setitem__(self, key, value):
+        if not isinstance(key, str):
+            raise ValueError("ключ должен быть строкой")
+        if not isinstance(value, int):
+            raise ValueError("должно быть целым числом")
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 60
+        if key == "hour":
+            self.sec = s + 60 * m + value * 3600
+        elif key == "min":
+            self.sec = s + 60 * value + h * 3600
+        elif key == "sec":
+            self.sec = value + 60 * m + h * 3600
 
 
-class Student:
-
-    def __init__(self, name, Par):
-        self.name = name
-        self.Par = Par
-        self.print_info()
-
-    def print_info(self):
-        print(f"{self.name} => {self.Par}")
-
-    class Parametr:
-        def __init__(self, model, proc, ram):
-            self.model = model
-            self.proc = proc
-            self.ram = ram
-
-        def __str__(self):
-            return f"{self.model}, {self.proc}, {self.ram}"
 
 
-stud1 = Student("Roman", Student.Parametr("HP","i7",32))
-stud2 = Student("Vladimir", Student.Parametr("HP","i5",16))
+c1 = Clock(600)
+c2 = Clock(200)
+print(c1.get_format_time())
+print(f"c1: {c1['hour']}:{c1['min']}:{c1['sec']}")
+c3 = c1 - c2
+print(f"c1 - c2: {c3['hour']}:{c3['min']}:{c3['sec']}")
+c3 = c1 * c2
+print(f"c1 * c2: {c3['hour']}:{c3['min']}:{c3['sec']}")
+c3 = c1 // c2
+print(f"c1 // c2: {c3['hour']}:{c3['min']}:{c3['sec']}")
+c3 = c1 % c2
+print(f"c1 % c2: {c3['hour']}:{c3['min']}:{c3['sec']}")
+c1 -= c2
+print(f"c1 -= c2: {c1['hour']}:{c1['min']}:{c1['sec']}")
+c1 *= c2
+print(f"c1 *= c2: {c1['hour']}:{c1['min']}:{c1['sec']}")
+c1 //= c2
+print(f"c1 //= c2: {c1['hour']}:{c1['min']}:{c1['sec']}")
+c1 %= c2
+print(f"c1 % c2: {c1['hour']}:{c1['min']}:{c1['sec']}")
+if c3 > c1:
+    print(f"c3 > c1 {True}")
+else:
+    print(f"c3 > c1 {False}")
+if c3 >= c1:
+    print(f"c3 >= c1 {True}")
+else:
+    print(f"c3 >= c1 {False}")
+if c3 < c1:
+    print(f"c3 < c1 {True}")
+else:
+    print(f"c3 < c1 {False}")
+if c3 <= c1:
+    print(f"c3 <= c1 {True}")
+else:
+    print(f"c3 <= c1 {False}")
+if c3 == c1:
+    print(f"c3 == c1 {True}")
+else:
+    print(f"c3 == c1 {False}")
+
+
+
+
+
+
+
 
 
 
