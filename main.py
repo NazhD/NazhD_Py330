@@ -4099,43 +4099,490 @@
 # else:
 #     print(f"c3 == c1 {False}")
 
+#
+#
+# import os,os.path
+#
+# # Создание файлов
+# dz_os_file1 = 'project.txt'
+# dz_os_file2 = 'test.txt'
+# test1 = "test1"
+# test2 = "test2"
+# os.mkdir(test1)
+# os.mkdir(test2)
+# with open(dz_os_file1, "w") as file:
+#     file.write("7777777775555555555555")
+# with open(dz_os_file2, "w") as file:
+#     file.write("7")
+#
+# # проверка фалйлов
+# ls = [dz_os_file1,dz_os_file2,test1,test2]
+# for i in ls:
+#     if os.path.isfile(i) == True:
+#         print(f"{i} - file - {os.path.getsize(i)} bites")
+#     else:
+#         print(f"{i} - dir")
+#
+# # Удаление файлов
+# os.remove('project.txt')
+# os.remove('test.txt')
+# os.rmdir("test1")
+# os.rmdir("test2")
+
+# 07.11.2023
+
+# class Rectangle:
+#     def __init__(self, w,h):
+#         self.w = w
+#         self.h = h
+#
+#     def get_perimetr(self):
+#         return 2 * (self.w + self.h)
+#
+# class Square:
+#     def __init__(self, a):
+#         self.a = a
+#
+#     def get_perimetr(self):
+#         return self.a * 4
+#
+# class Triangle:
+#     def __init__(self, a,b,c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def get_perimetr(self):
+#         return self.a + self.b +self.c
+#
+#
+# r1 = Rectangle(1,2)
+# r2 = Rectangle(3,4)
+# # print(r1.get_perimetr(), r2.get_per_rect())
+#
+# s1 = Square(10)
+# s2 = Square(20)
+# # print(s1.get_perimetr(), s2.get_per_sq())
+#
+# t1 = Triangle(1,2,3)
+# t2 = Triangle(4,5,6)
+# # print(t1.get_perimetr(), t2.get_per_tr())
+#
+# shape = [r1,r2,s1,s2,t1,t2]
+# for g in shape:
+#     print(g.get_perimetr())
 
 
-import os,os.path
+# class Number:
+#     def __init__(self, value):
+#         self.value = value
+#
+#     def total(self,a):
+#         return self.value +int(a)
+#
+#
+# class Text:
+#     def __init__(self, value):
+#         self.value = value
+#
+#     def total(self,a):
+#         return len(self.value + str(a))
+#
+# t1 = Number(10)
+# t2 = Text("Python")
+#
+# print(t1.total(35))
+# print(t2.total(35))
 
-# Создание файлов
-dz_os_file1 = 'project.txt'
-dz_os_file2 = 'test.txt'
-test1 = "test1"
-test2 = "test2"
-os.mkdir(test1)
-os.mkdir(test2)
-with open(dz_os_file1, "w") as file:
-    file.write("7777777775555555555555")
-with open(dz_os_file2, "w") as file:
-    file.write("7")
+# class Cat:
+#     def __init__(self,name,age):
+#         self.name = name
+#         self.age = age
+#
+#     def info(self):
+#         print(f"Я кот. Меня зовут {self.name}.Мой возраст {self.age}")
+#
+#     def make_sound(self):
+#         print(f"{self.name} мяукает")
+#
+#
+# class Dog:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def info(self):
+#         print(f"Я собака. Меня зовут {self.name}.Мой возраст{self.age}")
+#
+#     def make_sound(self):
+#         print(f"{self.name} гавкает")
+#
+# cat = Cat("Пушок",2.5)
+# dog = Dog("Мухтар",4)
+#
+# animal = [cat,dog]
+#
+# for i in animal:
+#     i.info()
+#     i.make_sound()
+#
+#
+# class Human:
+#     def __init__(self,name,surname,age):
+#         self.name = name
+#         self.surname = surname
+#         self.age = age
+#
+#     def info(self):
+#         print(f"{self.name} {self.surname} {self.age}",end="")
+#
+#
+# class Studend(Human):
+#     def __init__(self,name,surname,age,spec,group,ball):
+#         super().__init__(surname,name,age)
+#         self.spec = spec
+#         self.group = group
+#         self.ball = ball
+#
+#     def info(self):
+#         super().info()
+#         print(f"{self.spec} {self.group} {self.ball}")
+#
+#
+#
+# class Teacher(Human):
+#     ...
+#
+#
+# class Graduate(Studend):
+#     ...
+#
+#
+# group = [
+#     Studend("Vika","Vetosheva",15,"Гк","web_011",5),
+#     Studend("Vika", "Vetosheva", 15, "Гк", "web_011", 5)
+# ]
+#
+# for i in group:
+#     i.info()
 
-# проверка фалйлов
-ls = [dz_os_file1,dz_os_file2,test1,test2]
-for i in ls:
-    if os.path.isfile(i) == True:
-        print(f"{i} - file - {os.path.getsize(i)} bites")
-    else:
-        print(f"{i} - dir")
+# Функторы
+# class Counter:
+#     def __init__(self):
+#         self.__count = 0
+#
+#     def __call__(self,*args,**kwargs):
+#         self.__count += 1
+#         print(self.__count)
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
 
-# Удаление файлов
-os.remove('project.txt')
-os.remove('test.txt')
-os.rmdir("test1")
-os.rmdir("test2")
+# def string_strip(chars):
+#     def wrap(string):
+#         if not isinstance(string, str):
+#             raise ValueError("должен быть строкой")
+#         return string.strip(chars)
+#     return wrap
+#
+# s1 = string_strip("?:!.; ")
+# print(s1(" ?Heloo, World! "))
+#
+# class Stringstrip:
+#     def __init__(self,chars):
+#         self.__chars = chars
+#
+#     def __call__(self, *args, **kwargs):
+#         if not isinstance(args[0], str):
+#             raise ValueError("должен быть строкой")
+#         return args[0].strip(self.__chars)
+#
+#
+#
+# s2 = Stringstrip("?:!.; ")
+# print(s2(" ?Heloo, World! "))
+#
+# class MyDecorator:
+#     def __init__(self,fn):
+#         self.fn = fn
+#
+#     def __call__(self,x, y):
+#         print("Per vizovom func")
+#         res = self.fn(x,y)
+#         print("posle vizova func")
+#         return res
+#
+# @MyDecorator
+# def func(a,b):
+#     return a * b
+#
+# print(func(2,5))
+
+# class Power:
+#     def __init__(self,fn):
+#         self.fn = fn
+#
+#     def __call__(self,x, y):
+#         return self.fn(x,y)**2
+#
+# @Power
+# def func(a,b):
+#     return a * b
+#
+# print(func(2,5))
+
+# class MyDecorator:
+#     def __init__(self,fn):
+#         self.fn = fn
+#
+#     def __call__(self,*args,**kwargs):
+#         res = self.fn(*args,**kwargs)
+#         return res
+#
+# @MyDecorator
+# def func(a,b):
+#     return a * b
+# @MyDecorator
+# def func1(a,b,c):
+#     return a * b * c
+#
+# @MyDecorator
+# def func2(a,b,c):
+#     return a + b + c
+#
+# print(func(2,5))
+# print(func1(2,5,2))
+# print(func2(2,c=5,b=2))
+
+
+# class MyDecorator:
+#     def __init__(self,arg):
+#         self.arg = arg
+#
+#     def __call__(self,fn):
+#         def wrap (*args,**kwargs):
+#             res = fn(*args,**kwargs)
+#             return self.arg ** res
+#         return wrap
+#
+# @MyDecorator(2)
+# def func(a,b):
+#     return a * b
+#
+#
+# print(func(2,5))
+
+
+# def dec(fn):
+#     def wrap(*args,**kwargs):
+#         print("*"*20)
+#         fn(*args,**kwargs)
+#         print("*"*20)
+#     return wrap
+#
+# class Person:
+#     def __init__(self,name,surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @dec
+#     def info(self):
+#         print(f"{self.name} {self.surname}")
+#
+# p1 = Person("Vika", "Sokolova")
+# p1.info()
+
+
+# def decorator(cls):
+#     class Wraper(cls):
+#         def double(self,value):
+#             return value * 2
+#     return Wraper
+#
+# @decorator
+# class ActualClass:
+#     def __init__(self):
+#         print(f"Iniciolizator")
+#
+#     def quad(self,value):
+#         return value*4
+#
+# obj = ActualClass()
+# print(obj.quad(4))
+#
+
+# д искрипторы
+# __get__()
+# __set__()
+# __delite()
+# __set_name__()
+
+# class String:
+#     def __init__(self,value=None):
+#         if value:
+#             self.set(value)
+#
+#     def set(self,value):
+#
+#         if not isinstance(value,str):
+#             raise TypeError(f"{value} должно быть строкой")
+#         self.__value = value
+#
+#     def get(self):
+#         return self.__value
+#
+#
+#
+#
+# class Person:
+#     def __init__(self,name,surname):
+#         self.name = String(name)
+#         self.surname = String(surname)
+
+    # @property
+    # def name(self):
+    #     return self.__name
+    #
+    # @name.setter
+    # def name(self,value):
+    #     if not isinstance(value,str):
+    #         raise TypeError(f"{value} должно быть строкой")
+    #     self.__surname = value
 
 
 
+# class ValidSckript:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value,str):
+#             raise TypeError(f"{self.__name} должно быть строкой")
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#     name = ValidSckript()
+#     surname = ValidSckript()
+#     def __init__(self,name,surname):
+#         self.name = name
+#         self.surname = surname
+#
+# p = Person("Ivan","IVANOV")
+# print(p.name)
+# print(p.surname)
+
+from abc import ABC,abstractmethod
+class Shape:
+    def __init__(self,*args,**kwargs):
+        self.args = args
+        self.kwrgs = kwargs
+    @abstractmethod
+    def perimeter(self):
+        print(" ")
+
+    @abstractmethod
+    def area(self):
+        print(" ")
+
+    @abstractmethod
+    def paint_figure(self):
+        print(" ")
+
+class Square:
+    def __init__(self, arg, color):
+        self.arg = arg
+        self.color = color
+
+    def area(self):
+        return self.arg * self.arg
+
+    def perimeter(self):
+        return self.arg * 4
+
+    def paint_figure(self):
+        print((f"{self.color * self.arg}\n")* self.arg)
+
+
+    def print_info(self):
+        print("===Квадрат===")
+        print(f"Сторона: {self.arg}")
+        print(f"Цвет: {self.color}")
+        print(f"Площадь: {self.area()}")
+        print(f"Периметр: {self.perimeter()}")
+        self.paint_figure()
 
 
 
+class Rectengle:
+    def __init__(self, width,height, color):
+        self.width = width
+        self.height = height
+        self.color = color
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return (self.height + self.width) * 2
+
+    def paint_figure(self):
+        print((f"{self.color * self.width}\n")* self.height)
+
+    def print_info(self):
+        print("===Прямоуголник===")
+        print(f"Длинна : {self.height}")
+        print(f"Ширина: {self.width}")
+        print(f"Цвет: {self.color}")
+        print(f"Площадь: {self.area()}")
+        print(f"Периметр: {self.perimeter()}")
+        self.paint_figure()
 
 
+
+class Triangle:
+    def __init__(self, arg_a,arg_b,arg_c, color):
+        self.arg_a = arg_a
+        self.arg_b = arg_b
+        self.arg_c = arg_c
+        self.color = color
+
+    def area(self):
+        return (self.arg_a * self.arg_c) / 2
+
+    def perimeter(self):
+        return self.arg_a + self.arg_b + self.arg_c
+
+    def paint_figure(self):
+        r = 0
+        for i in range(self.arg_b):
+            r += 1
+            print((self.color * (i + r)).center(self.arg_a," "))
+
+    def print_info(self):
+        print("===Треуголник===")
+        print(f"Сторона 1 : {self.arg_a}")
+        print(f"Сторона 2: {self.arg_b}")
+        print(f"Сторона 3: {self.arg_c}")
+        print(f"Цвет: {self.color}")
+        print(f"Площадь: {self.area()}")
+        print(f"Периметр: {self.perimeter()}")
+        self.paint_figure()
+
+
+ls = [
+    Square(3,"+"),
+    Rectengle(7,3,"*"),
+    Triangle(11,6,6,"#")
+]
+
+for cl in ls:
+    cl.print_info()
 
 
 
