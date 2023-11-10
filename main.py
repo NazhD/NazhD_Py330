@@ -4476,8 +4476,9 @@
 # p = Person("Ivan","IVANOV")
 # print(p.name)
 # print(p.surname)
-
+#
 from abc import ABC,abstractmethod
+import math
 class Shape:
     def __init__(self,*args,**kwargs):
         self.args = args
@@ -4553,7 +4554,8 @@ class Triangle:
         self.color = color
 
     def area(self):
-        return (self.arg_a * self.arg_c) / 2
+        p = (self.arg_a + self.arg_b + self.arg_c) * 0.5
+        return round((p * (p - self.arg_a) * (p - self.arg_b) * (p - self.arg_c)) ** 0.5,2)
 
     def perimeter(self):
         return self.arg_a + self.arg_b + self.arg_c
@@ -4576,13 +4578,15 @@ class Triangle:
 
 
 ls = [
-    Square(3,"+"),
-    Rectengle(7,3,"*"),
+    Square(3," + "),
+    Rectengle(7,3," * "),
     Triangle(11,6,6,"#")
 ]
 
 for cl in ls:
     cl.print_info()
+
+
 
 
 
