@@ -4477,116 +4477,147 @@
 # print(p.name)
 # print(p.surname)
 #
-from abc import ABC,abstractmethod
-import math
-class Shape:
-    def __init__(self,*args,**kwargs):
-        self.args = args
-        self.kwrgs = kwargs
-    @abstractmethod
-    def perimeter(self):
-        print(" ")
+# from abc import ABC,abstractmethod
+# import math
+# class Shape:
+#     def __init__(self,*args,**kwargs):
+#         self.args = args
+#         self.kwrgs = kwargs
+#     @abstractmethod
+#     def perimeter(self):
+#         print(" ")
+#
+#     @abstractmethod
+#     def area(self):
+#         print(" ")
+#
+#     @abstractmethod
+#     def paint_figure(self):
+#         print(" ")
+#
+# class Square:
+#     def __init__(self, arg, color):
+#         self.arg = arg
+#         self.color = color
+#
+#     def area(self):
+#         return self.arg * self.arg
+#
+#     def perimeter(self):
+#         return self.arg * 4
+#
+#     def paint_figure(self):
+#         print((f"{self.color * self.arg}\n")* self.arg)
+#
+#
+#     def print_info(self):
+#         print("===Квадрат===")
+#         print(f"Сторона: {self.arg}")
+#         print(f"Цвет: {self.color}")
+#         print(f"Площадь: {self.area()}")
+#         print(f"Периметр: {self.perimeter()}")
+#         self.paint_figure()
+#
+#
+#
+# class Rectengle:
+#     def __init__(self, width,height, color):
+#         self.width = width
+#         self.height = height
+#         self.color = color
+#
+#     def area(self):
+#         return self.width * self.height
+#
+#     def perimeter(self):
+#         return (self.height + self.width) * 2
+#
+#     def paint_figure(self):
+#         print((f"{self.color * self.width}\n")* self.height)
+#
+#     def print_info(self):
+#         print("===Прямоуголник===")
+#         print(f"Длинна : {self.height}")
+#         print(f"Ширина: {self.width}")
+#         print(f"Цвет: {self.color}")
+#         print(f"Площадь: {self.area()}")
+#         print(f"Периметр: {self.perimeter()}")
+#         self.paint_figure()
+#
+#
+#
+# class Triangle:
+#     def __init__(self, arg_a,arg_b,arg_c, color):
+#         self.arg_a = arg_a
+#         self.arg_b = arg_b
+#         self.arg_c = arg_c
+#         self.color = color
+#
+#     def area(self):
+#         p = (self.arg_a + self.arg_b + self.arg_c) * 0.5
+#         return round((p * (p - self.arg_a) * (p - self.arg_b) * (p - self.arg_c)) ** 0.5,2)
+#
+#     def perimeter(self):
+#         return self.arg_a + self.arg_b + self.arg_c
+#
+#     def paint_figure(self):
+#         r = 0
+#         for i in range(self.arg_b):
+#             r += 1
+#             print((self.color * (i + r)).center(self.arg_a," "))
+#
+#     def print_info(self):
+#         print("===Треуголник===")
+#         print(f"Сторона 1 : {self.arg_a}")
+#         print(f"Сторона 2: {self.arg_b}")
+#         print(f"Сторона 3: {self.arg_c}")
+#         print(f"Цвет: {self.color}")
+#         print(f"Площадь: {self.area()}")
+#         print(f"Периметр: {self.perimeter()}")
+#         self.paint_figure()
+#
+#
+# ls = [
+#     Square(3," + "),
+#     Rectengle(7,3," * "),
+#     Triangle(11,6,6,"#")
+# ]
+#
+# for cl in ls:
+#     cl.print_info()
 
-    @abstractmethod
-    def area(self):
-        print(" ")
+class Integer:
+    @staticmethod
+    def verify_cord(cord):
+        if not isinstance(cord, int):
+            raise TypeError(f"Координата {cord} должна быть числом.")
 
-    @abstractmethod
-    def paint_figure(self):
-        print(" ")
+    def __set_name__(self, owner, name):
+        self.name = "_" + name
 
-class Square:
-    def __init__(self, arg, color):
-        self.arg = arg
-        self.color = color
+    def __get__(self, instance, owner):
+        # return instance.__dict__[self.name]
+        return getattr(instance,self.name)
 
-    def area(self):
-        return self.arg * self.arg
+    def __set__(self, instance, value):
+        Integer.verify_cord(value)
+        # instance.__dict__[self.name] = value
+        setattr(instance, self.name, value)
 
-    def perimeter(self):
-        return self.arg * 4
+class Point3D:
+    x = Integer()
+    y = Integer()
+    z = Integer()
 
-    def paint_figure(self):
-        print((f"{self.color * self.arg}\n")* self.arg)
-
-
-    def print_info(self):
-        print("===Квадрат===")
-        print(f"Сторона: {self.arg}")
-        print(f"Цвет: {self.color}")
-        print(f"Площадь: {self.area()}")
-        print(f"Периметр: {self.perimeter()}")
-        self.paint_figure()
+    def __init__(self,x,y,z):
+        self.x = x
+        self.y = y
+        self.z = z
 
 
-
-class Rectengle:
-    def __init__(self, width,height, color):
-        self.width = width
-        self.height = height
-        self.color = color
-
-    def area(self):
-        return self.width * self.height
-
-    def perimeter(self):
-        return (self.height + self.width) * 2
-
-    def paint_figure(self):
-        print((f"{self.color * self.width}\n")* self.height)
-
-    def print_info(self):
-        print("===Прямоуголник===")
-        print(f"Длинна : {self.height}")
-        print(f"Ширина: {self.width}")
-        print(f"Цвет: {self.color}")
-        print(f"Площадь: {self.area()}")
-        print(f"Периметр: {self.perimeter()}")
-        self.paint_figure()
-
-
-
-class Triangle:
-    def __init__(self, arg_a,arg_b,arg_c, color):
-        self.arg_a = arg_a
-        self.arg_b = arg_b
-        self.arg_c = arg_c
-        self.color = color
-
-    def area(self):
-        p = (self.arg_a + self.arg_b + self.arg_c) * 0.5
-        return round((p * (p - self.arg_a) * (p - self.arg_b) * (p - self.arg_c)) ** 0.5,2)
-
-    def perimeter(self):
-        return self.arg_a + self.arg_b + self.arg_c
-
-    def paint_figure(self):
-        r = 0
-        for i in range(self.arg_b):
-            r += 1
-            print((self.color * (i + r)).center(self.arg_a," "))
-
-    def print_info(self):
-        print("===Треуголник===")
-        print(f"Сторона 1 : {self.arg_a}")
-        print(f"Сторона 2: {self.arg_b}")
-        print(f"Сторона 3: {self.arg_c}")
-        print(f"Цвет: {self.color}")
-        print(f"Площадь: {self.area()}")
-        print(f"Периметр: {self.perimeter()}")
-        self.paint_figure()
-
-
-ls = [
-    Square(3," + "),
-    Rectengle(7,3," * "),
-    Triangle(11,6,6,"#")
-]
-
-for cl in ls:
-    cl.print_info()
-
-
+p1 = Point3D(1,2,3)
+print(p1.__dict__)
+print(p1.x,p1.y,p1.z)
 
 
 
