@@ -4812,16 +4812,19 @@ import json
 # s = ['1','2','3']
 # y = {}
 # y["key"] = a
-#
-#
-# print(y)
+# y["key1"] = b
+# for i in y.keys():
+#     print(i)
 
+
+# print(y)
+#
 from random import choice
 
-def gen_person(count):
+def gen_person():
     name = ''
     tel = ''
-    key = ''
+
     letters = ['a','b','c','d','e','f','g','h']
     nums = ['1','2','3','4','5','6','7','8','9','0']
 
@@ -4831,28 +4834,32 @@ def gen_person(count):
     while len(tel) != 10:
         tel += choice(nums)
 
-    key += str(count)
-    person = {}
-
-    k = {
+    person = {
         'name': name,
         'tel': tel
     }
-    person[key] = k
+
     return person
 
 
-def wtite_json(person_dict):
+
+def wtite_json(person_dict, count):
+
     try:
         data = json.load(open('persons_json'))
         pers = json.load(open('persons_json'))
-    except FileNotFoundError:
-        data = []
 
-    data.append(person_dict)
+    except FileNotFoundError:
+        data = {}
+
+    data.update({(str(count+1)+'.'+ str(len(data)+1)):person_dict})
+
+
     with open("persons_json", 'w') as fr:
         json.dump(data, fr, indent=2)
 
+for i in range(7):
+    wtite_json(gen_person(),i)
 
-for i in range(5):
-    wtite_json(gen_person(i))
+
+
