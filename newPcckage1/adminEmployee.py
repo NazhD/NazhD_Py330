@@ -1,4 +1,5 @@
 from employee import Employee
+# from newPcckage1.employee import Employee
 
 
 class AdminEmp(Employee):
@@ -10,10 +11,3 @@ class AdminEmp(Employee):
 
     def zp_all(self):
         return self.salary
-
-
-
-
-
-
-

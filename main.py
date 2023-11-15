@@ -14,6 +14,7 @@
 # print("a =", id(a))
 # import os.path
 # import re
+import json
 
 # a = b = c = 1
 # print(a, b, c)
@@ -4476,10 +4477,10 @@
 # p = Person("Ivan","IVANOV")
 # print(p.name)
 # print(p.surname)
-#
+# #
 # from abc import ABC,abstractmethod
 # import math
-# class Shape:
+# class Shape(ABC):
 #     def __init__(self,*args,**kwargs):
 #         self.args = args
 #         self.kwrgs = kwargs
@@ -4495,7 +4496,7 @@
 #     def paint_figure(self):
 #         print(" ")
 #
-# class Square:
+# class Square(Shape):
 #     def __init__(self, arg, color):
 #         self.arg = arg
 #         self.color = color
@@ -4520,7 +4521,7 @@
 #
 #
 #
-# class Rectengle:
+# class Rectengle(Shape):
 #     def __init__(self, width,height, color):
 #         self.width = width
 #         self.height = height
@@ -4546,7 +4547,7 @@
 #
 #
 #
-# class Triangle:
+# class Triangle(Shape):
 #     def __init__(self, arg_a,arg_b,arg_c, color):
 #         self.arg_a = arg_a
 #         self.arg_b = arg_b
@@ -4586,39 +4587,272 @@
 # for cl in ls:
 #     cl.print_info()
 
-class Integer:
-    @staticmethod
-    def verify_cord(cord):
-        if not isinstance(cord, int):
-            raise TypeError(f"Координата {cord} должна быть числом.")
+# class Integer(Shape):
+#     @staticmethod
+#     def verify_cord(cord):
+#         if not isinstance(cord, int):
+#             raise TypeError(f"Координата {cord} должна быть числом.")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance,self.name)
+#
+#     def __set__(self, instance, value):
+#         Integer.verify_cord(value)
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self,x,y,z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1,2,3)
+# print(p1.__dict__)
+# print(p1.x,p1.y,p1.z)
 
-    def __set_name__(self, owner, name):
-        self.name = "_" + name
+#
+# import json
+#
+# data = {
+#     'name': 'Olga',
+#     'age': 35,
+#     '20': None,
+#     'True': 1,
+#     'hobbies': ('running', 'siniging'),
+#     'children': [
+#         {
+#             'first_name' : 'Alis',
+#             'age': 6
+#         }
+#     ]
+#
+# }
+#
+# # with open("data_file.json", "w") as fw:
+# #     json.dump(data, fw)
+#
+# with open("data_file.json", "r") as fw:
+#     data1 = json.load(fw)
+#     print(data1)
+#     d = json.dumps(data, sort_keys=True)
+#     print(d)
+#     d2 = json.loads(d)
+#     print(d2)
+#     print(type(d2))
 
-    def __get__(self, instance, owner):
-        # return instance.__dict__[self.name]
-        return getattr(instance,self.name)
 
-    def __set__(self, instance, value):
-        Integer.verify_cord(value)
-        # instance.__dict__[self.name] = value
-        setattr(instance, self.name, value)
+# x = {
+#     "name": 'Виктор'
+# }
+#
+# print(json.dumps(x))
+# print(json.dumps(x, ensure_ascii=False))
 
-class Point3D:
-    x = Integer()
-    y = Integer()
-    z = Integer()
+# from random import choice
+# def gen_person():
+#     name = ''
+#     tel = ''
+#     letters = ['a','b','c','d','e','f','g','h']
+#     nums = ['1','2','3','4','5','6','7','8','9','0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     # print(nums)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     # print(tel)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#     return person
+#
+#
+#
+# def wtite_json(person_dict):
+#     try:
+#         data = json.load(open('persons_json'))
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)
+#     with open("persons_json", 'w') as fr:
+#         json.dump(data, fr, indent=2)
+#
+# for i in range(5):
+#     wtite_json(gen_person())
 
-    def __init__(self,x,y,z):
-        self.x = x
-        self.y = y
-        self.z = z
+
+# class Studend:
+#     def __init__(self, name, *marks):
+#         self.name = name
+#         self.marks = list(marks)
+#
+#     def __str__(self):
+#         # a = ", ".join(map(str, self.marks))
+#         # a = ""
+#         # for i in self.marks:
+#         #     a += str(i) + ", "
+#         # return f"Студунт : {self.name}: {a[:-2]}"
+#         # return f"Студунт : {self.name}: {a}"
+#         return  f"Студен: {self.name}: {', '.join(map(str, self.marks))}"
+#
+#     def add_mark(self, mark):
+#         self.marks.append(mark)
+#
+#     def delite_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks),2)
+#
+# class Group:
+#     def __init__(self, students, gr):
+#         self.group = gr
+#         self.students = students
+#
+#     def __str__(self):
+#         a = ""
+#         for i in self.students:
+#             a += str(i) + "\n"
+#         return f"Группа {self.group}\n{a}"
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @staticmethod
+#     def change_group(group1, group2, index):
+#         return group2.add_student(group1.remove_student(index))
+#
+#     def dump_to_json(self, file_name):
+#         data = {"name": self.students, "marks": "self.mark"}
+#         with open(file_name, 'w') as f:
+#             json.dump(file_name, f)
+#
+#     def load_from_json(self, file_name):
+#         with open(file_name, 'r') as f:
+#             json.load(f)
+#
+#     def dump_group(self, file_name):
+#         with open(file_name, 'w') as f:
+#             stud_list = []
+#             for i in self.students:
+#                 stud_list.append([i.name, i.marks])
+#             json.dump(stud_list, f, indent=5,)
+#
+#     def upload_group(self, file_name):
+#         with open(file_name, "r") as f:
+#             print(json.load(f))
+#
+#
+#
+# st1 = Studend("Bodnya", 5,4,3,4,5,3)
+# st2 = Studend("Nikolaenko", 2,3,5,4,2)
+# st3 = Studend("Brukov", 3,5,3,2,5,4)
+#
+# sts = [st1,st2]
+# my_group = Group(sts, "Гк Python")
+# my_group.add_student(st3)
+# my_group.remove_student(1)
+# # print(my_group)
+#
+# gruop22 = [st2]
+# my_group2 = Group(gruop22, "Гк Web")
+# # print(my_group2)
+# Group.change_group(my_group, my_group2, 0)
+# print(my_group)
+# print(my_group2)
+#
+# # st1.add_mark(4)
+# # print(st1)
+# # st1.delite_mark(3)
+# # print(st1)
+# # st1.edit_mark(2, 4)
+# # print(st1)
+# # print(st1.aerage_mark())
+# file2 = "group1.json"
+# my_group.dump_to_json(file2)
+# my_group.load_from_json(file2)
+# file = "group2.json"
+# my_group2.dump_group(file)
+# my_group2.upload_group(file)
+# c ={
+#     "5": 7,
+#     "6": 8
+# }
+# a = {
+#     "1": 1,
+#     "2": 2
+#      }
+# b = {
+#     "3": 1,
+#     "4": 2
+#      }
+# r = [a,b,c]
+# s = ['1','2','3']
+# y = {}
+# y["key"] = a
+#
+#
+# print(y)
+
+from random import choice
+
+def gen_person(count):
+    name = ''
+    tel = ''
+    key = ''
+    letters = ['a','b','c','d','e','f','g','h']
+    nums = ['1','2','3','4','5','6','7','8','9','0']
+
+    while len(name) != 7:
+        name += choice(letters)
+
+    while len(tel) != 10:
+        tel += choice(nums)
+
+    key += str(count)
+    person = {}
+
+    k = {
+        'name': name,
+        'tel': tel
+    }
+    person[key] = k
+    return person
 
 
-p1 = Point3D(1,2,3)
-print(p1.__dict__)
-print(p1.x,p1.y,p1.z)
+def wtite_json(person_dict):
+    try:
+        data = json.load(open('persons_json'))
+        pers = json.load(open('persons_json'))
+    except FileNotFoundError:
+        data = []
+
+    data.append(person_dict)
+    with open("persons_json", 'w') as fr:
+        json.dump(data, fr, indent=2)
 
 
-
-
+for i in range(5):
+    wtite_json(gen_person(i))

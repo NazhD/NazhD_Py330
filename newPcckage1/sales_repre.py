@@ -1,6 +1,6 @@
 from employee import Employee
 
-
+# from newPcckage1.employee import Employee
 class Sales(Employee):
     def __init__(self, name, count):
         super().__init__(name)
