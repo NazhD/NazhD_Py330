@@ -14,6 +14,7 @@
 # print("a =", id(a))
 # import os.path
 # import re
+import csv
 import json
 
 # a = b = c = 1
@@ -4819,47 +4820,260 @@ import json
 
 # print(y)
 #
-from random import choice
+# from random import choice
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a','b','c','d','e','f','g','h']
+#     nums = ['1','2','3','4','5','6','7','8','9','0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#
+#     return person
+#
+#
+#
+# def wtite_json(person_dict, count):
+#
+#     try:
+#         data = json.load(open('persons_json'))
+#         pers = json.load(open('persons_json'))
+#
+#     except FileNotFoundError:
+#         data = {}
+#
+#     data.update({(str(count+1) +'_'+ str(len(data)+1)) + str(len(data)):person_dict})
+#
+#
+#     with open("persons_json", 'w') as fr:
+#         json.dump(data, fr, indent=2)
+#
+# for i in range(7):
+#     wtite_json(gen_person(),i)
 
-def gen_person():
-    name = ''
-    tel = ''
+#
+# import requests
+# import json
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todes = json.loads(response.text)
+#
+# todos_by_user = {}
+#
+# for todo in todes:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo["userId"]] += 1
+#
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1
+#
+# print(todos_by_user)
+#
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)
+#
+# max_complate = top_users[0][1]
+# print(max_complate)
+#
+# users = []
+# for user, num_compale in top_users:
+#     if num_compale < max_complate:
+#         break
+#     users.append(str(user))
+# print(users)
+#
+#
+# max_users = " and ".join(users)
+# print(max_users)
+#
+# s = "s" if len(users) > 1 else ""
+# print(f"user{s} {max_users} completed {max_complate} TODOs")
+#
+#
+# def keep(td):
+#     is_comp = td["completed"]
+#     has_max_count = str(td["userId"]) in users
+#     return is_comp and has_max_count
+#
+# with open("filter_max_comp.json", "w") as f:
+#     filter_todos = list(filter(keep, todes))
+#     json.dump(filter_todos, f, indent=2)
 
-    letters = ['a','b','c','d','e','f','g','h']
-    nums = ['1','2','3','4','5','6','7','8','9','0']
 
-    while len(name) != 7:
-        name += choice(letters)
+# CSV (Comma Separated Values)
 
-    while len(tel) != 10:
-        tel += choice(nums)
-
-    person = {
-        'name': name,
-        'tel': tel
-    }
-
-    return person
-
-
-
-def wtite_json(person_dict, count):
-
-    try:
-        data = json.load(open('persons_json'))
-        pers = json.load(open('persons_json'))
-
-    except FileNotFoundError:
-        data = {}
-
-    data.update({(str(count+1)+'.'+ str(len(data)+1)):person_dict})
+# import requests
+# import json
+# import csv
+#
+# with open("data.csv",encoding="UTF8") as r_file:
+#     filds = ['Имя','Профессия','Год рождения']
+#     file_reader = csv.DictReader(r_file, delimiter=";", fieldnames=fields)
+#     count = 0
+#     for row in file_reader:
+#         print(row)
+#         if count == 0:
+#             print(f"Фаил содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"\t{row['Имя'] - row['Профессия']}.Родился в {row['Год рождения']} году.")
+#         count += 1
+#
+#     print(f"Всего в файде {count} строки.")
 
 
-    with open("persons_json", 'w') as fr:
-        json.dump(data, fr, indent=2)
+# with open("student.scv", "w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     writer.writerow(["Имя","Класс","Возраст"])
+#     writer.writerow(["Женя", "9", "15"])
+#     writer.writerow(["Саша", "5", "12"])
+#     writer.writerow(["Маша", "11", "18"])
 
-for i in range(7):
-    wtite_json(gen_person(),i)
+#
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+# with open("sw_data.csv", "w") as f:
+#     wrter = csv.writer(f, delimiter=";", lineterminator="\r")
+#     # for row in data:
+#     #     wrter.writerow(row)
+#     wrter.writerows(data)
+#
+# with open("sw_data.csv") as f:
+#     print(f.read())
+
+# import requests
+# import json
+# import csv
+
+# with open("student1.csv","w") as f:
+#     names = ['Имя','Возраст',]
+#     file_writer = csv.DictWriter(f, delimiter=",", lineterminator="\r", fieldnames=names)
+#     file_writer.writeheader()
+#     file_writer.writerow({"Имя": "Женя","Возраст": "22"})
+#     file_writer.writerow({"Имя": "Лиля", "Возраст": "12"})
+#     file_writer.writerow({"Имя": "Коля", "Возраст": "52"})
+
+# data =[
+#     {"1": "2",
+#     "2": "3",
+#     "3": "4",
+#      },
+#     {"1": "2",
+#      "2": "3",
+#      "3": "4",
+#      },
+#     {"1": "2",
+#      "2": "3",
+#      "3": "4",
+#      }
+# ]
+#
+#
+# with open('dict.csv' , 'w') as f:
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r",fieldnames=list(data[0].keys()))
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
+
+# import requests
+# import json
+#
+# response = requests.get('https://jsonplaceholder.typicode.com/todos')
+# # print(response.text)
+#
+# todos = json.loads(response.text)
+# # for i in todos:
+# #     print(i)
+#
+# with open('ff.csv', 'w') as f:
+#     writer = csv.DictWriter(f, todos[0].keys(), delimiter=';', lineterminator='\r', )
+#     writer.writeheader()
+#     for i in todos:
+#         writer.writerow(i)
+
+# Парсинг
+
+# from bs4 import BeautifulSoup
+
+import requests
+import csv
+import json
+import os
+
+def filtr(a):
+    if int(a) % 2 == 0:
+        return True
+
+
+class Albom:
+    def __init__(self,ur, func, file):
+        self.ur = ur
+        self.func = func
+        self.file = file
+
+
+    def convert_to_object(self):
+        response = requests.get(self.ur)
+        tod = json.loads(response.text)
+        return tod
+
+
+    def convert_to_csv(self):
+        tod = a.convert_to_object()
+        with open(self.file, "w") as f:
+            writer = csv.DictWriter(f, delimiter=";", lineterminator='\r', fieldnames=list(tod[0].keys()))
+            writer.writeheader()
+            for i in  tod:
+                if self.func(i["albumId"]) == True:
+                    writer.writerow(i)
+
+
+    def print_info(self):
+        tod = a.convert_to_object()
+        count = 0
+        for i in tod:
+            if self.func(i["albumId"]) == True:
+                count += 1
+                for h , j in i.items():
+                    print(f"{h} = {j}")
+                print(f"Совпадений: {count}")
+                print()
+
+
+    def del_file(self):
+        os.remove(self.file)
+
+
+a = Albom("https://jsonplaceholder.typicode.com/photos", filtr, "convert.csv")
+a.convert_to_object()
+a.convert_to_csv()
+a.print_info()
+a.del_file()
+
+
+
+
+
+
+
+
+
+
 
 
 
