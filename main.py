@@ -17,6 +17,7 @@
 import csv
 import json
 
+import requests
 # a = b = c = 1
 # print(a, b, c)
 
@@ -5006,74 +5007,260 @@ import json
 #     for i in todos:
 #         writer.writerow(i)
 
+
+
+# import requests
+# import csv
+# import json
+# import os
+# from tkinter import *
+#
+# def filtr(a):
+#     if int(a) == 1:
+#         return True
+#
+#
+# class Albom:
+#     def __init__(self,ur, func, file):
+#         self.ur = ur
+#         self.func = func
+#         self.file = file
+#
+#
+#     def convert_to_object(self):
+#         response = requests.get(self.ur)
+#         tod = json.loads(response.text)
+#         return tod
+#
+#
+#     def convert_to_csv(self):
+#         tod = a.convert_to_object()
+#         with open(self.file, "w") as f:
+#             writer = csv.DictWriter(f, delimiter=";", lineterminator='\r', fieldnames=list(tod[0].keys()))
+#             writer.writeheader()
+#             for i in  tod:
+#                 if self.func(i["albumId"]) == True:
+#                     writer.writerow(i)
+#
+#
+#     # def print_info(self):
+#     #     tod = a.convert_to_object()
+#     #     count = 0
+#     #     for i in tod:
+#     #         if self.func(i["albumId"]) == True:
+#     #             count += 1
+#     #             for h , j in i.items():
+#     #                 print(f"{h} = {j}")
+#     #             print(f"Совпадений: {count}")
+#     #             print()
+#
+#     def ue(self):
+#         tod = a.convert_to_object()
+#         p = []
+#         for i in tod:
+#             for g, h in i.items():
+#                 p.append((str(g),str(h)))
+#         return p
+#
+#     def del_file(self):
+#         os.remove(self.file)
+#
+#
+# a = Albom("https://jsonplaceholder.typicode.com/photos", filtr, "convert.csv")
+# a.convert_to_object()
+# a.convert_to_csv()
+# a.print_info()
+# a.del_file()
+
+
+#
+# root = Tk()
+# root.title("json convert to csv")
+# root.geometry("500x500")
+# fr = []
+# for i in a.ue():
+#     fr.append(str(i[0]))
+# for i in range(30):
+#     fr[i] = Label(text=fr"{fr[i]} = {a.ue()[i][1]}")
+#     fr[i].pack()
+#
+# root.mainloop()
+
+
+
 # Парсинг
+# from bs4 import BeautifulSoup
+#
+# f = open("index.html",encoding="utf8").read()
+# soup = BeautifulSoup(f, "html.parser")
+# row = soup.find("div", class_="name").text
+# row = soup.find_all("div", class_="name")
+# row = soup.find_all("div", class_="row")[1].find("div", class_="links")
+# row = soup.find_all("div", {"data-set": "salary"})
+# row = soup.find("div", id = "whois").text
+# row = soup.find("div", string="Alena").parent
+# row = soup.find("div", string="Alena").find_parent(class_="row")
+# row = soup.find("div", id = "whois3").find_next_sibling()
+# row = soup.find("div", id = "whois3").find_previous_sibling()
+
+
 
 # from bs4 import BeautifulSoup
 
+# def get_copyriter(teg):
+#     whois = teg.find("div", class_="whois").text
+#     if "Copywriter" in whois:
+#         return teg
+#     return None
+#
+# f = open("index.html",encoding="utf8").read()
+# soup = BeautifulSoup(f, "html.parser")
+# copywriter = []
+# row = soup.find_all("div", class_="row")
+# for i in row:
+#     cw = get_copyriter(i)
+#     if cw:
+#         copywriter.append(cw)
+#
+#
+# print(copywriter)
+
+# from bs4 import BeautifulSoup
+# import re
+
+# def get_salary(s):
+#     pattern = r"\d+"
+#     # res = re.findall(pattern,s)[0]
+#     res = re.search(pattern, s).group()
+#     return res
+#
+# f = open("index.html",encoding="utf8").read()
+# soup = BeautifulSoup(f, "html.parser")
+# salary = soup.find_all("div", {"data-set": "salary"})
+#
+# for i in salary:
+#     print(get_salary(i.text))
+
+
+
+# from bs4 import BeautifulSoup
+# import re
+#
+# r = requests.get("https://ru.wordpress.org/")
+# print(r.status_code)
+# # print(r.headers)
+# print(r.headers['Content-Type'])
+# print(r.content)
+# print(r.text)
+
+# import requests
+# from bs4 import BeautifulSoup
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find("header", id="masthead").find("p", class_="site-title").text
+#     return p1
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/"
+#     print(get_data(get_html(url)))
+#
+# if __name__ == '__main__':
+#     main()
+
+# import re
+# import requests
+# from bs4 import BeautifulSoup
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+# def refined(s):
+#     return re.sub(r"\D+", "", s)
+#
+#
+# def write_csv(data):
+#     with open("plugin.csv", "a") as f:
+#         writer = csv.writer(f, lineterminator="\r", delimiter=";")
+#         writer.writerow((data['name'], data['url'], data['rating']))
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     s = soup.find(id="main").find_all("section", class_="plugin-section")[-1]
+#     plugins = s.find_all("article", class_="plugin-card")
+#
+#     for plugin in plugins:
+#         name = plugin.find("h3").text
+#         # url = plugin.find("h3").find("a").get("href")
+#         url = plugin.find("h3").find("a")["href"]
+#         rating = plugin.find("span", class_="rating-count").find("a").text
+#         r = refined(rating)
+#
+#
+#         data = {'name': name, "url": url, "rating": r}
+#         write_csv(data)
+#
+# def main():
+#     url = "https://ru.wordpress.org/plugins/"
+#     get_data(get_html(url))
+#
+# if __name__ == '__main__':
+#     main()
+
+
 import requests
-import csv
-import json
-import os
-
-def filtr(a):
-    if int(a) % 2 == 0:
-        return True
+import re
+from bs4 import BeautifulSoup
 
 
-class Albom:
-    def __init__(self,ur, func, file):
-        self.ur = ur
-        self.func = func
-        self.file = file
+def get_html(url):
+    r = requests.get(url)
+    return r.text
 
 
-    def convert_to_object(self):
-        response = requests.get(self.ur)
-        tod = json.loads(response.text)
-        return tod
+def name_id(s):
+    math = re.search(r"\d+", s)
+    return math[0]
 
 
-    def convert_to_csv(self):
-        tod = a.convert_to_object()
-        with open(self.file, "w") as f:
-            writer = csv.DictWriter(f, delimiter=";", lineterminator='\r', fieldnames=list(tod[0].keys()))
-            writer.writeheader()
-            for i in  tod:
-                if self.func(i["albumId"]) == True:
-                    writer.writerow(i)
+def server_id(s_id):
+    adr = "https://wargm.ru/user" +"/" + str(s_id)
+    r = requests.get(adr)
+    soup = BeautifulSoup(r.text, "lxml").find(id="content").find(class_="row")
+    name = soup.find(class_="of-h").find(class_="trim").text
+    id = soup.find(class_="of-h").find(class_="f-r ml-5").text
+    steamId = soup.find(class_="of-h").find(target="_blank").text
+    return name , id , steamId
 
 
-    def print_info(self):
-        tod = a.convert_to_object()
-        count = 0
-        for i in tod:
-            if self.func(i["albumId"]) == True:
-                count += 1
-                for h , j in i.items():
-                    print(f"{h} = {j}")
-                print(f"Совпадений: {count}")
-                print()
+def get_data(html):
+    soup = BeautifulSoup(html, "lxml")
+    s = soup.find(id="main").find_all(class_="row")[2]
+    s1 = s.find_all(class_="cl-12 cl-s-3")[3]
+    s2 = s1.find_all(class_="card-body pt-5 pb-5")
+
+    with open("user_steam.csv", "w") as f:
+        writer = csv.writer(f,delimiter=";",lineterminator="\r")
+        writer.writerow(("User", "ID", "SteamID"))
+
+    for i in s2:
+        name = i.find(class_="trim")
+        User_info = server_id(name_id(str(name)))
+        with open("user_steam.csv", "a") as f:
+            writer = csv.writer(f, delimiter=";", lineterminator="\r")
+            writer.writerow((User_info[0], User_info[1], User_info[2]))
 
 
-    def del_file(self):
-        os.remove(self.file)
+def main():
+    url = "https://wargm.ru/server/66235/votes"
+    get_data(get_html(url))
 
 
-a = Albom("https://jsonplaceholder.typicode.com/photos", filtr, "convert.csv")
-a.convert_to_object()
-a.convert_to_csv()
-a.print_info()
-a.del_file()
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == '__main__':
+    main()
