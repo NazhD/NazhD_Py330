@@ -14,12 +14,13 @@
 # print("a =", id(a))
 # import os.path
 # import re
-import csv
-import json
-
-import requests
+# import csv
+# import json
+#
+# import requests
 # a = b = c = 1
 # print(a, b, c)
+import csv
 
 # a, b, c = 5, "hi", 9.21
 # print(a, b, c)
@@ -5016,7 +5017,7 @@ import requests
 # from tkinter import *
 #
 # def filtr(a):
-#     if int(a) == 1:
+#     if int(a) == 0:
 #         return True
 #
 #
@@ -5043,16 +5044,16 @@ import requests
 #                     writer.writerow(i)
 #
 #
-#     # def print_info(self):
-#     #     tod = a.convert_to_object()
-#     #     count = 0
-#     #     for i in tod:
-#     #         if self.func(i["albumId"]) == True:
-#     #             count += 1
-#     #             for h , j in i.items():
-#     #                 print(f"{h} = {j}")
-#     #             print(f"Совпадений: {count}")
-#     #             print()
+#     def print_info(self):
+#         tod = a.convert_to_object()
+#         count = 0
+#         for i in tod:
+#             if self.func(i["albumId"]) == True:
+#                 count += 1
+#                 for h , j in i.items():
+#                     print(f"{h} = {j}")
+#                 print(f"Совпадений: {count}")
+#                 print()
 #
 #     def ue(self):
 #         tod = a.convert_to_object()
@@ -5213,54 +5214,135 @@ import requests
 # if __name__ == '__main__':
 #     main()
 
+#
+# import requests
+# import re
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def name_id(s):
+#     math = re.search(r"\d+", s)
+#     return math[0]
+#
+#
+# def server_id(s_id):
+#     adr = "https://wargm.ru/user" +"/" + str(s_id)
+#     r = requests.get(adr)
+#     soup = BeautifulSoup(r.text, "lxml").find(id="content").find(class_="row")
+#     name = soup.find(class_="of-h").find(class_="trim").text
+#     id = soup.find(class_="of-h").find(class_="f-r ml-5").text
+#     steamId = soup.find(class_="of-h").find(target="_blank").text
+#     return name , id , steamId
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     s = soup.find(id="main").find_all(class_="row")[2]
+#     s1 = s.find_all(class_="cl-12 cl-s-3")[3]
+#     s2 = s1.find_all(class_="card-body pt-5 pb-5")
+#
+#     with open("user_steam.csv", "w") as f:
+#         writer = csv.writer(f,delimiter=";",lineterminator="\r")
+#         writer.writerow(("User", "ID", "SteamID"))
+#
+#     for i in s2:
+#         name = i.find(class_="trim")
+#         User_info = server_id(name_id(str(name)))
+#         with open("user_steam.csv", "a") as f:
+#             writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#             writer.writerow((User_info[0], User_info[1], User_info[2]))
+#
+#
+# def main():
+#     url = "https://wargm.ru/server/66235/votes"
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
-import requests
-import re
-from bs4 import BeautifulSoup
+
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+# def refind_cy(s):
+#     return s.split()
+#
+# def wtite_csv(data):
+#     with open("plugin1.csv", "a", encoding="utf-8-sig") as f:
+#         writer = csv.writer(f, lineterminator='\r', delimiter=":")
+#         writer.writerow((data['name'],data['snippet'], data['active'],data['test_cy']))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find_all("article", class_="plugin-card")
+#     for el in p1:
+#         try:
+#             name = el.find("h3").text
+#         except ValueError:
+#             name = ''
+#
+#         try:
+#             snippet = el.find("div", class_="entry-excerpt").text.strip()
+#         except ValueError:
+#             snippet = ''
+#
+#
+#         try:
+#             active = el.find("span", class_="active-installs").text.strip()
+#         except ValueError:
+#             active = ""
+#
+#         try:
+#             test = el.find("span", class_="tested-with").text.strip()
+#             test_cy = refind_cy(test)[2]
+#         except AttributeError:
+#             test = ""
+#
+#         data = {
+#             'name': name,
+#             'snippet': snippet,
+#             'active': active,
+#             'test_cy': test_cy
+#         }
+#
+#         wtite_csv(data)
+#
+# def main():
+#     for i in range(26,50):
+#         url = f"https://ru.wordpress.org/plugins/browse/popular/page/{i}"
+#         get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
+#
+
+# from parsers import Parser
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+# if __name__ == '__main__':
+#     main()
 
 
-def get_html(url):
-    r = requests.get(url)
-    return r.text
+# MVC
+# model
+# view
+# controller
 
 
-def name_id(s):
-    math = re.search(r"\d+", s)
-    return math[0]
 
 
-def server_id(s_id):
-    adr = "https://wargm.ru/user" +"/" + str(s_id)
-    r = requests.get(adr)
-    soup = BeautifulSoup(r.text, "lxml").find(id="content").find(class_="row")
-    name = soup.find(class_="of-h").find(class_="trim").text
-    id = soup.find(class_="of-h").find(class_="f-r ml-5").text
-    steamId = soup.find(class_="of-h").find(target="_blank").text
-    return name , id , steamId
-
-
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    s = soup.find(id="main").find_all(class_="row")[2]
-    s1 = s.find_all(class_="cl-12 cl-s-3")[3]
-    s2 = s1.find_all(class_="card-body pt-5 pb-5")
-
-    with open("user_steam.csv", "w") as f:
-        writer = csv.writer(f,delimiter=";",lineterminator="\r")
-        writer.writerow(("User", "ID", "SteamID"))
-
-    for i in s2:
-        name = i.find(class_="trim")
-        User_info = server_id(name_id(str(name)))
-        with open("user_steam.csv", "a") as f:
-            writer = csv.writer(f, delimiter=";", lineterminator="\r")
-            writer.writerow((User_info[0], User_info[1], User_info[2]))
-
-
-def main():
-    url = "https://wargm.ru/server/66235/votes"
-    get_data(get_html(url))
-
-
-if __name__ == '__main__':
-    main()
