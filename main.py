@@ -21,6 +21,8 @@
 # a = b = c = 1
 # print(a, b, c)
 import csv
+import json
+import tkinter
 
 # a, b, c = 5, "hi", 9.21
 # print(a, b, c)
@@ -5342,6 +5344,225 @@ import csv
 # model
 # view
 # controller
+
+
+# from tkinter import*
+#
+# root = Tk()
+# root['bg'] = 'black'
+# root.geometry('500x1000')
+#
+# convas = Canvas(root)
+# convas['bg'] = 'grey'
+# convas.place(relx=0.05,rely=0.02,relwidth=0.9,relheight=0.95)
+#
+# frame = Frame(root, bg = 'red')
+# frame.place(relx=0.1, rely=0.05, relwidth=0.80,relheight=0.2)
+#
+#
+# title = Label(frame, text='11111', bg='red', font=40)
+# title.pack()
+# bth = Button(frame, text='Knopka', bg='grey')
+# bth.pack()
+
+# root.mainloop()
+
+# Сокет
+#
+# import socket
+# from view import index, blog
+#
+# URLS={
+#     '/':index,
+#     '/blog': blog
+# }
+#
+#
+# def parse_request(request):
+#     parsed = request.split()
+#     method = parsed[0]
+#     url = parsed[1]
+#     return method, url
+#
+# def generate_headers(method, url):
+#     if method != 'GET':
+#         return 'HTTP/1.1 405 Mthod Not Allowed!\n\n', 405
+#     if url not in URLS:
+#         return 'HTTP/1.1 405 Mthod Not Found!\n\n', 404
+#     return 'HTTP/1.1 200 OK',200
+#
+# def generate_content(code, url):
+#     if code == 404:
+#         return '<h1>404</h1><h3>Page Not Found!</h3>'
+#     if code == 405:
+#         return '<h1>405</h1><h3>Page Not Allowed!</h3>'
+#     return URLS[url]()
+#
+# def generate_response(request):
+#     method, url = parse_request(request)
+#     heders, code = generate_headers(method, url)
+#     body = generate_content(code, url)
+#     return (heders + body).encode()
+#
+#
+# def run():
+#     server_socet = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#     server_socet.bind(('127.0.0.1', 5000))
+#     server_socet.listen()
+#
+#     while True:
+#         clien_socet, addr = server_socet.accept()
+#         request = clien_socet.recv(1024)
+#         print(f"Клиент: {addr} => \n{request.decode('utf-8')}\n")
+#
+#         response = generate_response(request.decode())
+#         clien_socet.sendall(response)
+#         clien_socet.close()
+#
+#
+#
+# if __name__ == "__main__":
+#     run()
+
+
+# import sqlite3
+
+# con = sqlite3.connect("profile.db")
+# cur = con.cursor()
+# cur.execute("""
+# """)
+#
+# con.close()
+
+# with sqlite3.connect("profile.db") as con:
+#     cur = con.cursor()
+
+    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    # id INTEGER PRIMARY KEY AUTOINCREMENT,
+    # name TEXT NOT NULL,
+    # summa REAL,
+    # date TEXT)
+    # """)
+    # cur.execute("DROP TABLE users")
+
+
+
+
+
+
+# class DispleyTk:
+
+
+    # def lable1_to_win(self):
+    #     label1 = tk.Label(text="Путь к файлу", bg="#504739", fg="white", font=("arial", 15, "bold"),
+    #                     padx=20, bd=3)
+    #     label1.place(rely=0.1, relx=0.1)
+    #
+    # def buton_convert_to_json(self):
+    #     buton = tk.Button(text="Convert", bg="black", fg="white",
+    #                     font=("arial", 15, "bold"), relief=tk.RAISED, padx=20, bd=3,
+    #                     command=self.get_entri_values,activebackground="red")
+    #     buton.place(rely=0.6, relx=0.6)
+    #
+    # def get_entri_values(self):
+    #     r = entri1.get()
+
+# t = DispleyTk()
+
+
+
+
+# import tkinter as tk
+# import json
+# import os
+
+# class Decoder:
+#     def __init__(self, adres, data_key, key1, key2):
+#         self.adres = adres
+#         self.data_key = data_key
+#         self.key1 = int(key1)-1
+#         self.key2 = int(key2)-1
+#
+#     def csv_convert_to_json(self):
+#         s = []
+#         r = {}
+#         with open(self.adres, "r") as f:
+#             for i in f:
+#                 t = i.split(";")
+#                 s.append({t[self.key1]:t[self.key2]})
+#         print(s)
+#         r[self.data_key] = s
+#         with open("text_json.json", "w") as f:
+#             try:
+#                 tt = f.write(json.dumps(r, indent=2))
+#             except FileNotFoundError:
+#                 print("1111")
+#
+#     def get_adres_file(self):
+#         return os.path.abspath("text_json.json")
+#
+#
+# def get_entri_values():
+#     values = vol.get()
+#     key1 = key1_one.get()
+#     key2 = key2_one.get()
+#     d = Decoder(values,1,key1,key2)
+#     label3 = tk.Label(text=d.get_adres_file(),bg="#504739", fg="white").pack()
+#     d.csv_convert_to_json()
+#
+
+
+# import sqlite3
+#
+#
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+
+    # cur.execute("""
+    # DROP TABLE person_table
+    # """)
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # DROP COLUMN andress
+    #
+    # """)
+
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # ADD COLUMN andress TEXT
+    #
+    # """)
+
+    # cur.execute("""
+    # ALTER TABLE person
+    # RENAME TO person_table;
+    # """)
+
+    # cur.execute("""CREATE TABLE IF NOT EXISTS person(
+    # id INTEGER PRIMARY KEY AUTOINCREMENT,
+    # name TEXT NOT NULL,
+    # phone BLOB DEFAULT +79024416084,
+    # age INTEGER CHECK(age > 0 AND age <100),
+    # email TEXT UNIQUE
+    # )""")
+
+with open("www.html", "w") as f:
+    f.write("<p>"+"1111111111"+"<p>")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
