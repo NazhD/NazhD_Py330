@@ -5547,9 +5547,17 @@ import tkinter
     # age INTEGER CHECK(age > 0 AND age <100),
     # email TEXT UNIQUE
     # )""")
+#
+# import sqlite3
+# cur.execute("""CREATE TABLE IF NOT EXISTS person(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     phone BLOB DEFAULT +79024416084,
+#     age INTEGER CHECK(age > 0 AND age <100),
+#     email TEXT UNIQUE
+#     )""")
 
-with open("www.html", "w") as f:
-    f.write("<p>"+"1111111111"+"<p>")
+
 
 
 
