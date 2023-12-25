@@ -5593,12 +5593,53 @@ import tkinter
 #     )
 #     """)
 
+#
+#
+# import sqlite3
+#
+# with sqlite3.connect("education.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS car(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     );
+#     CREATE TABLE IF NOT EXISTS cost(
+#         name TEXT,tr-in INTEGER,buy INTEGER
+#     )
+#     """)
+#     cur.execute("INSERT INTO car VALUES(NULL,'запорожец','1000')")
+#     last_row_id = cur.lastrowid
+#     buy_car_id = 2
+#     cur.execute("INSERT INTO cost VALUES('Илья',?,?)",(last_row_id, buy_car_id))
 
 
+# import sqlite3
+
+# with sqlite3.connect("cars.db") as con:
+#     cur = con.cursor()
+#     with open("sql_dump.sql", "w") as f:
+#         for sql in con.iterdump():
+#             f.write(sql)
 
 
+# with sqlite3.connect("cars.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "r") as f:
+#         sql = f.read()
+#         cur.executescript(sql)
 
 
+a = {'/user/25929': {'NikName': 'SADAM0N', 'Steam_id': '76561198047567526', 'Дата регистрации': '12 янв. 2021'}, '/user/43442': {'NikName': 'Andrayd', 'Steam_id': '76561198029501508', 'Дата регистрации': '21 июн. 2021'}, '/user/97016': {'NikName': 'MarIvana', 'Steam_id': '76561198033870666', 'Дата регистрации': '3 июл. 2022'}, '/user/185373': {'NikName': 'Grenka Vyborgsky', 'Steam_id': '76561198170197811', 'Дата регистрации': '29 авг.'}, '/user/52785': {'NikName': 'ЭЛАЙВ', 'Steam_id': '76561198247587154', 'Дата регистрации': '13 сен. 2021'}, '/user/158970': {'NikName': 'CRYSIS', 'Steam_id': '76561199484662981', 'Дата регистрации': '24 апр.'}, '/user/39267': {'NikName': 'Susler', 'Steam_id': '76561198008237517', 'Дата регистрации': '14 май 2021'}, '/user/147773': {'NikName': 'NeroN', 'Steam_id': '76561198338172770', 'Дата регистрации': '13 мар.'}, '/user/11624': {'NikName': 'uz_on', 'Steam_id': '76561198063388458', 'Дата регистрации': '17 май 2020'}, '/user/21741': {'NikName': 'konoval011', 'Steam_id': '76561198448594611', 'Дата регистрации': '23 ноя. 2020'}, '/user/104966': {'NikName': 'Obnimaxa', 'Steam_id': '76561198175407053', 'Дата регистрации': '26 авг. 2022'}, '/user/27736': {'NikName': 'CAHU4_OXOTHUK', 'Steam_id': '76561198283638264', 'Дата регистрации': '26 янв. 2021'}, '/user/40175': {'NikName': 'tishka6379', 'Steam_id': '76561198384498352', 'Дата регистрации': '24 май 2021'}, '/user/90979': {'NikName': 'Alexsungod', 'Steam_id': '76561198971303501', 'Дата регистрации': '27 май 2022'}, '/user/105237': {'NikName': 'cTpaxoLud', 'Steam_id': '76561198112169185', 'Дата регистрации': '28 авг. 2022'}, '/user/122603': {'NikName': 'andreyka_filipov_1978', 'Steam_id': '76561199109362051', 'Дата регистрации': '5 дек. 2022'}, '/user/194248': {'NikName': 'ricochet', 'Steam_id': '76561199052194935', 'Дата регистрации': '23 окт.'}, '/user/184696': {'NikName': 'kirykus', 'Steam_id': '76561199247978258', 'Дата регистрации': '26 авг.'}, '/user/34081': {'NikName': 'XapoH_116rus', 'Steam_id': '76561198203265681', 'Дата регистрации': '23 мар. 2021'}, '/user/137769': {'NikName': 'dyadya_SaSHa', 'Steam_id': '76561198313568375', 'Дата регистрации': '3 фев.'}, '/user/90052': {'NikName': 'TANKvanDO', 'Steam_id': '76561198874440209', 'Дата регистрации': '21 май 2022'}, '/user/14937': {'NikName': 'Halk', 'Steam_id': '76561198980735441', 'Дата регистрации': '24 июл. 2020'}, '/user/139894': {'NikName': 'aidis307', 'Steam_id': '76561199043071130', 'Дата регистрации': '10 фев.'}, '/user/7288': {'NikName': 'Zloy', 'Steam_id': '76561198850422932', 'Дата регистрации': '12 янв. 2020'}, '/user/106902': {'NikName': 'kosmach1985', 'Steam_id': '76561199005827731', 'Дата регистрации': '9 сен. 2022'}, '/user/198869': {'NikName': 'czapaevaleksei', 'Steam_id': '76561199570565468', 'Дата регистрации': '17 ноя.'}, '/user/185795': {'NikName': 'StellShevv', 'Steam_id': '76561199382873502', 'Дата регистрации': '1 сен.'}, '/user/120316': {'NikName': '[R-ZONE]', 'Steam_id': '76561198073821942', 'Дата регистрации': '24 ноя. 2022'}, '/user/93001': {'NikName': 'Носок судьбы', 'Steam_id': '76561198414644339', 'Дата регистрации': '9 июн. 2022'}, '/user/56313': {'NikName': 'Troy', 'Steam_id': '76561198862033380', 'Дата регистрации': '16 окт. 2021'}, '/user/126402': {'NikName': 'XxX[ozery]', 'Steam_id': '76561198118213793', 'Дата регистрации': '26 дек. 2022'}, '/user/29499': {'NikName': 'San_Sanych', 'Steam_id': '76561198166354648', 'Дата регистрации': '11 фев. 2021'}, '/user/186042': {'NikName': 'Liar', 'Steam_id': '76561198076237865', 'Дата регистрации': '2 сен.'}, '/user/101751': {'NikName': 'melkeeej', 'Steam_id': '76561197967210721', 'Дата регистрации': '3 авг. 2022'}, '/user/132247': {'NikName': 'koreec525', 'Steam_id': '76561198138064717', 'Дата регистрации': '17 янв.'}, '/user/61994': {'NikName': 'Rokki_Black', 'Steam_id': '76561199163810113', 'Дата регистрации': '30 ноя. 2021'}, '/user/115036': {'NikName': 'Still_aLive', 'Steam_id': '76561198081366198', 'Дата регистрации': '26 окт. 2022'}, '/user/75331': {'NikName': 'igoryok_simba', 'Steam_id': '76561198044148733', 'Дата регистрации': '19 фев. 2022'}, '/user/123836': {'NikName': 'Baton', 'Steam_id': '76561198932628170', 'Дата регистрации': '11 дек. 2022'}}
+count1 = 0
+for key in a.keys():
+    count1 += 1
+    co = []
+    for i in a[key].keys():
+        co.append(a[key][i])
+    print(count1,"=",co)
 
 
 
