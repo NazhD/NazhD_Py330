@@ -5770,17 +5770,19 @@ persons = [
 ]
 
 html = """
+{% macro stroka(line) %}
+type="{{ line.type }}" name="{{ line.name }}" placeholder="{{ line.placeholder }}"
+{% endmacro %}
+
 {% for i in users %}
-<p><input type="{{ i.type }}" name="{{ i.name }}" placeholder="{{ i.placeholder }}"></p>
+<p><input {{ stroka(i) }}></p>
 {% endfor %}
 """
 
 tm = Template(html)
 msg = tm.render(users=persons)
 
-print(msg)
-
 with open("index.html" , "w") as f:
 	for i in msg:
 		f.write(i)
-
+print(msg)
