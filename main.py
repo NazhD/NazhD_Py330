@@ -20,9 +20,9 @@
 # import requests
 # a = b = c = 1
 # print(a, b, c)
-import csv
-import json
-import tkinter
+# import csv
+# import json
+# import tkinter
 
 # a, b, c = 5, "hi", 9.21
 # print(a, b, c)
@@ -5759,30 +5759,30 @@ import tkinter
 # print(msg)
 
 
-from jinja2 import Template
-
-persons = [
-	{"name": "firstname", "placeholder": "Имя", "type": "text"},
-	{"name": "lastname", "placeholder": "Фамилия", "type": "text"},
-	{"name": "address", "placeholder": "Адрес", "type": "text"},
-    {"name": "phone", "placeholder": "Телефон", "type": "tel"},
-    {"name": "email", "placeholder": "Почта", "type": "email"}
-]
-
-html = """
-{% macro stroka(line) %}
-type="{{ line.type }}" name="{{ line.name }}" placeholder="{{ line.placeholder }}"
-{% endmacro %}
-
-{% for i in users %}
-<p><input {{ stroka(i) }}></p>
-{% endfor %}
-"""
-
-tm = Template(html)
-msg = tm.render(users=persons)
-
-with open("index.html" , "w") as f:
-	for i in msg:
-		f.write(i)
-print(msg)
+# from jinja2 import Template
+#
+# persons = [
+# 	{"name": "firstname", "placeholder": "Имя", "type": "text"},
+# 	{"name": "lastname", "placeholder": "Фамилия", "type": "text"},
+# 	{"name": "address", "placeholder": "Адрес", "type": "text"},
+#     {"name": "phone", "placeholder": "Телефон", "type": "tel"},
+#     {"name": "email", "placeholder": "Почта", "type": "email"}
+# ]
+#
+# html = """
+# {% macro stroka(line) %}
+# type="{{ line.type }}" name="{{ line.name }}" placeholder="{{ line.placeholder }}"
+# {% endmacro %}
+#
+# {% for i in users %}
+# <p><input {{ stroka(i) }}></p>
+# {% endfor %}
+# """
+#
+# tm = Template(html)
+# msg = tm.render(users=persons)
+#
+# with open("index.html" , "w") as f:
+# 	for i in msg:
+# 		f.write(i)
+# print(msg)
