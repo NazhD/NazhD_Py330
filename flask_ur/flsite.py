@@ -6,7 +6,6 @@ menu = [
     {"name": "Главная", "url": "index"},
     {"name": "О нас", "url": "about"},
     {"name": "Обратная связь", "url": "contact"}
-
 ]
 
 

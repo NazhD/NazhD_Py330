@@ -1,0 +1,45 @@
+body{
+    margin: 5px;
+    border: 2px solid;
+    padding: 0 10px;
+    background-color: rgb(95, 93, 93);
+    box-shadow: -1px 5px 20px 3px rgb(39, 9, 9);
+}
+
+.menu{
+    background:linear-gradient(black,grey);
+    margin-top: 0;
+    border: rgb(44, 35, 35) solid 2px;
+    min-height: 70px;
+    font-size: 40px;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    align-items: center;
+    box-shadow: -1px 5px 20px -3px rgb(31, 23, 23);
+}
+
+.sil{
+    color:rgb(39, 31, 30);
+    text-decoration: none;
+
+}
+
+.forma{
+    width: 420px;
+    height: 620px;
+    border: 1px solid;
+    padding: 100px;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    background: linear-gradient(grey,black);
+    box-shadow: -1px 5px 20px -3px rgb(31, 23, 23);
+}
+.textarea{
+    resize: none;
+    background: black;
+    color: rgb(173, 51, 51);
+    font-size: 17px;
+    
+}

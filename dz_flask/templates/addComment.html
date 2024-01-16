@@ -1,0 +1,18 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }}
+{% endblock title %}
+
+{% block shapka %}
+    {{ super() }}
+
+<div class="forma">
+<form action="addComment" method="post">
+    <p>Тема: <input  class="textarea" type="text" name="theme" required></p>
+    <p>Описание</p>
+    <p><textarea class="textarea" name="message" cols="40" rows="20"></textarea></p>
+    <p><input class="textarea" type="submit" value="Отправить"></p>
+</form>
+</div>
+{% endblock shapka %}

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>{{ title }}</title>
+    {% endblock title %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stile.css') }}">
+</head>
+<body>
+    {% block shapka %}
+    <div>
+    <ul class="menu">
+        {% for m in menu %}
+            <li><a class="sil" href="{{ m.url }}">{{ m.name }}</a></li>
+        {% endfor %}
+    </ul>
+    </div>
+    {% endblock shapka %}
+</body>
+</html>
