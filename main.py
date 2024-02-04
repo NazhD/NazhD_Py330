@@ -5786,3 +5786,27 @@
 # 	for i in msg:
 # 		f.write(i)
 # print(msg)
+
+import sqlite3
+
+with sqlite3.connect("student.db") as con:
+    cur = con.cursor()
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS students(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        surname TEXT NOT NULL,
+        age INTEGER NOT NULL CHECK(age >= 18 AND age <= 60)
+    )""")
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS courses(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        course_name TEXT NOT NULL
+    )""")
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS connections(
+        student_id INTEGER NOT NULL,
+        course_id INTEGER NOT NULL,
+        FOREIGN KEY (student_id) REFERENCES students(id),
+        FOREIGN KEY (course_id) REFERENCES courses(id)
+    )""")
